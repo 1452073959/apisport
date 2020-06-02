@@ -16,7 +16,7 @@ Route::group([
     //赛事
     $router->resource('srace', 'SRaceController');
     //会员卡
-    $router->resource('Xmember', 'SMemberController');
+    $router->resource('member', 'SMemberController');
     $router->resource('memberorder', 'SMemberOrderController');
     $router->resource('image', 'ImageController');
     //用户

@@ -16,7 +16,7 @@ $api->version('v1', [
     //获取用户信息
     $api->get('getuser', 'LoginController@getuser');
     //会员卡列表
-    $api->get('Xmember', 'MemberController@memberlist');
+    $api->get('member', 'MemberController@memberlist');
     //场馆列表
     $api->get('venue', 'VenueController@venue');
     //会员码
