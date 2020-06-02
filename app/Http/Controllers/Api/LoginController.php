@@ -11,6 +11,7 @@ use App\Models\User;
 
 class loginController extends Controller
 {
+    //中间件
     public function __construct()
     {
 //        $this->middleware('sport')->only('getuser');
