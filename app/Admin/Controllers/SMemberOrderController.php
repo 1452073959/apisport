@@ -19,7 +19,7 @@ class SMemberOrderController extends AdminController
     {
 
         return Grid::make(new SMemberOrder(), function (Grid $grid) {
-            // 关联 profile 表数据
+            // 关联 profile 表数据2222
             $grid->model()->with(['member']);
             $grid->model()->with(['user']);
             $grid->id->sortable();
