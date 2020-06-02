@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'SMember' => 'SMember',
+        'SMember' => '会员卡',
     ],
     'fields' => [
         'cardname' => '卡名',

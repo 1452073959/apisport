@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'SMemberOrder' => 'SMemberOrder',
+        'SMemberOrder' => '会员卡订单',
     ],
     'fields' => [
         'user_id' => '用户',

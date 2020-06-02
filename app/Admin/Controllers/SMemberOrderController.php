@@ -10,7 +10,7 @@ use Dcat\Admin\Controllers\AdminController;
 
 class SMemberOrderController extends AdminController
 {
-    /**
+    /**11
      * Make a grid builder.
      *
      * @return Grid
@@ -19,7 +19,7 @@ class SMemberOrderController extends AdminController
     {
 
         return Grid::make(new SMemberOrder(), function (Grid $grid) {
-            // 关联 profile 表数据2222
+            // 关联 profile 表数据
             $grid->model()->with(['member']);
             $grid->model()->with(['user']);
             $grid->id->sortable();

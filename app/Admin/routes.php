@@ -23,5 +23,6 @@ Route::group([
     $router->resource('users', 'UserController');
     //场馆
     $router->resource('venue', 'SVenueController');
-
+    //商城
+    $router->resource('commodity', 'CommodityController');
 });

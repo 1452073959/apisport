@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'UserMember' => 'UserMember',
+        'UserMember' => '会员',
     ],
     'fields' => [
         'user_id' => 'user_id',

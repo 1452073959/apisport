@@ -70,6 +70,9 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection venueserve
      * @property Grid\Column|Collection extra
      * @property Grid\Column|Collection lease
+     * @property Grid\Column|Collection memerprice
+     * @property Grid\Column|Collection img
+     * @property Grid\Column|Collection repertory
      * @property Grid\Column|Collection parent_id
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection icon
@@ -85,8 +88,11 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
      * @property Grid\Column|Collection token
+     * @property Grid\Column|Collection mode
      * @property Grid\Column|Collection s_venue_id
      * @property Grid\Column|Collection r_lease_id
+     * @property Grid\Column|Collection code
+     * @property Grid\Column|Collection codenot
      *
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
@@ -147,6 +153,9 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection venueserve(string $label = null)
      * @method Grid\Column|Collection extra(string $label = null)
      * @method Grid\Column|Collection lease(string $label = null)
+     * @method Grid\Column|Collection memerprice(string $label = null)
+     * @method Grid\Column|Collection img(string $label = null)
+     * @method Grid\Column|Collection repertory(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
@@ -162,8 +171,11 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
+     * @method Grid\Column|Collection mode(string $label = null)
      * @method Grid\Column|Collection s_venue_id(string $label = null)
      * @method Grid\Column|Collection r_lease_id(string $label = null)
+     * @method Grid\Column|Collection code(string $label = null)
+     * @method Grid\Column|Collection codenot(string $label = null)
      */
     class Grid {}
 
@@ -229,6 +241,9 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection venueserve
      * @property Show\Field|Collection extra
      * @property Show\Field|Collection lease
+     * @property Show\Field|Collection memerprice
+     * @property Show\Field|Collection img
+     * @property Show\Field|Collection repertory
      * @property Show\Field|Collection parent_id
      * @property Show\Field|Collection order
      * @property Show\Field|Collection icon
@@ -244,8 +259,11 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
      * @property Show\Field|Collection token
+     * @property Show\Field|Collection mode
      * @property Show\Field|Collection s_venue_id
      * @property Show\Field|Collection r_lease_id
+     * @property Show\Field|Collection code
+     * @property Show\Field|Collection codenot
      *
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
@@ -306,6 +324,9 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection venueserve(string $label = null)
      * @method Show\Field|Collection extra(string $label = null)
      * @method Show\Field|Collection lease(string $label = null)
+     * @method Show\Field|Collection memerprice(string $label = null)
+     * @method Show\Field|Collection img(string $label = null)
+     * @method Show\Field|Collection repertory(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
@@ -321,8 +342,11 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
+     * @method Show\Field|Collection mode(string $label = null)
      * @method Show\Field|Collection s_venue_id(string $label = null)
      * @method Show\Field|Collection r_lease_id(string $label = null)
+     * @method Show\Field|Collection code(string $label = null)
+     * @method Show\Field|Collection codenot(string $label = null)
      */
     class Show {}
 

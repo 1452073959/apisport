@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'SVenue' => 'SVenue',
+        'SVenue' => '场馆',
     ],
     'fields' => [
         'venuename' => '场馆名称',

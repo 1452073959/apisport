@@ -21,6 +21,8 @@ $api->version('v1', [
     $api->get('venue', 'VenueController@venue');
     //会员码
     $api->get('membercode', 'MemberController@membercode');
+    //商品列表
+    $api->get('commodity', 'CommodityController@commoditylist');
 });
 
 $api->version('v2', function($api) {
