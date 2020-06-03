@@ -23,6 +23,9 @@ Route::group([
     $router->resource('users', 'UserController');
     //场馆
     $router->resource('venue', 'SVenueController');
+    //约球订单
+    $router->resource('sportorder', 'SportOrderController');
     //商城
     $router->resource('commodity', 'CommodityController');
+
 });

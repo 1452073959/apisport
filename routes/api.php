@@ -25,6 +25,10 @@ $api->version('v1', [
     $api->get('commodity', 'CommodityController@commoditylist');
     //下单
     $api->post('adjorder', 'OrderController@adjorder');
+    //订单查询
+    $api->get('orderlist', 'OrderController@orderlist');
+
+
     //微信
     $api->any('wechat', 'WechatController@wechat');
     $api->any('xiadan', 'WechatController@xiadan');

@@ -13,6 +13,11 @@ class CommodityController extends Controller
     public function commoditylist()
     {
         $commoditylist=Commodity::all();
+        foreach ($commoditylist as $k1=>$v1)
+        {
+            $commoditylist[$k1]['img'] = config('app.url') . 'uploads/' . $v1['img'];
+        }
+
         return $this->success($commoditylist);
     }
 }

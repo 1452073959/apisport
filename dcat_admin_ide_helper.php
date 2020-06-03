@@ -73,6 +73,14 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection memerprice
      * @property Grid\Column|Collection img
      * @property Grid\Column|Collection repertory
+     * @property Grid\Column|Collection no
+     * @property Grid\Column|Collection ordertitle
+     * @property Grid\Column|Collection vid
+     * @property Grid\Column|Collection uid
+     * @property Grid\Column|Collection money
+     * @property Grid\Column|Collection paid_at
+     * @property Grid\Column|Collection payment_no
+     * @property Grid\Column|Collection invoice
      * @property Grid\Column|Collection parent_id
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection icon
@@ -82,6 +90,9 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
+     * @property Grid\Column|Collection sales
+     * @property Grid\Column|Collection ship_status
+     * @property Grid\Column|Collection ship_data
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
@@ -156,6 +167,14 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection memerprice(string $label = null)
      * @method Grid\Column|Collection img(string $label = null)
      * @method Grid\Column|Collection repertory(string $label = null)
+     * @method Grid\Column|Collection no(string $label = null)
+     * @method Grid\Column|Collection ordertitle(string $label = null)
+     * @method Grid\Column|Collection vid(string $label = null)
+     * @method Grid\Column|Collection uid(string $label = null)
+     * @method Grid\Column|Collection money(string $label = null)
+     * @method Grid\Column|Collection paid_at(string $label = null)
+     * @method Grid\Column|Collection payment_no(string $label = null)
+     * @method Grid\Column|Collection invoice(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
@@ -165,6 +184,9 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
+     * @method Grid\Column|Collection sales(string $label = null)
+     * @method Grid\Column|Collection ship_status(string $label = null)
+     * @method Grid\Column|Collection ship_data(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
@@ -244,6 +266,14 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection memerprice
      * @property Show\Field|Collection img
      * @property Show\Field|Collection repertory
+     * @property Show\Field|Collection no
+     * @property Show\Field|Collection ordertitle
+     * @property Show\Field|Collection vid
+     * @property Show\Field|Collection uid
+     * @property Show\Field|Collection money
+     * @property Show\Field|Collection paid_at
+     * @property Show\Field|Collection payment_no
+     * @property Show\Field|Collection invoice
      * @property Show\Field|Collection parent_id
      * @property Show\Field|Collection order
      * @property Show\Field|Collection icon
@@ -253,6 +283,9 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
+     * @property Show\Field|Collection sales
+     * @property Show\Field|Collection ship_status
+     * @property Show\Field|Collection ship_data
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
@@ -327,6 +360,14 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection memerprice(string $label = null)
      * @method Show\Field|Collection img(string $label = null)
      * @method Show\Field|Collection repertory(string $label = null)
+     * @method Show\Field|Collection no(string $label = null)
+     * @method Show\Field|Collection ordertitle(string $label = null)
+     * @method Show\Field|Collection vid(string $label = null)
+     * @method Show\Field|Collection uid(string $label = null)
+     * @method Show\Field|Collection money(string $label = null)
+     * @method Show\Field|Collection paid_at(string $label = null)
+     * @method Show\Field|Collection payment_no(string $label = null)
+     * @method Show\Field|Collection invoice(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
@@ -336,6 +377,9 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
+     * @method Show\Field|Collection sales(string $label = null)
+     * @method Show\Field|Collection ship_status(string $label = null)
+     * @method Show\Field|Collection ship_data(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
