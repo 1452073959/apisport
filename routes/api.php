@@ -23,6 +23,11 @@ $api->version('v1', [
     $api->get('membercode', 'MemberController@membercode');
     //商品列表
     $api->get('commodity', 'CommodityController@commoditylist');
+    //下单
+    $api->post('adjorder', 'OrderController@adjorder');
+    //微信
+    $api->any('wechat', 'WechatController@wechat');
+    $api->any('xiadan', 'WechatController@xiadan');
 });
 
 $api->version('v2', function($api) {
