@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\SMemberOrder;
-use App\Models\SVenue;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\Api\LoginRequest;

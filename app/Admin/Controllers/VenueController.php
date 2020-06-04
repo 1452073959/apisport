@@ -2,14 +2,14 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Repositories\SVenue;
-use App\Models\RLease;
+use App\Admin\Repositories\Venue;
+use App\Models\Lease;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
 
-class SVenueController extends AdminController
+class VenueController extends AdminController
 {
     /**
      * Make a grid builder.
@@ -18,7 +18,7 @@ class SVenueController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new SVenue(), function (Grid $grid) {
+        return Grid::make(new Venue(), function (Grid $grid) {
             $grid->id->sortable();
             $grid->venuename;
             $grid->address;
@@ -52,7 +52,7 @@ class SVenueController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new SVenue(), function (Show $show) {
+        return Show::make($id, new Venue(), function (Show $show) {
             $show->id;
             $show->venuename;
             $show->address;
@@ -78,32 +78,24 @@ class SVenueController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new SVenue(), function (Form $form) {
+        return Form::make(new Venue('lease'), function (Form $form) {
             $form->display('id');
             $form->text('venuename')->required();
             $form->text('address')->required();
-            $form->text('label');
-            $form->image('venueimg')->uniqueName()->required();;
-            $form->text('tel')->required();
-//            $form->text('starttime');
-//            $form->text('endtime');
+            $form->tags('label');
+            $form->image('venueimg');
+            $form->text('tel');
             $form->timeRange('starttime', 'endtime', '营业时间');
-            $form->text('venuesynopsis')->required();
-            $form->text('venuefacility')->required();
-            $form->text('venueserve')->required();
-            $form->table('extra', function (Form\NestedForm $table) {
-                $table->text('key');
-                $table->text('value');
-                $table->text('desc');
+            $form->text('venuesynopsis');
+            $form->text('venuefacility');
+            $form->text('venueserve');
+            $form->hasMany('lease','方式', function (Form\NestedForm $form) {
+                $form->text('name');
+                $form->textarea('description','描述');
+                $form->number('price','价格(元)');
             });
-//            $form->text('mode');
-            $form->checkbox('mode', '租赁方式')
-                ->options(RLease::all()->pluck('title', 'id'))
-                ->saving(function ($value) {
-//                    dd($key);
-                    // 转化成json字符串保存到数据库
-                    return json_encode($value);
-                });
+
+
             $form->display('created_at');
             $form->display('updated_at');
 
@@ -113,7 +105,7 @@ class SVenueController extends AdminController
 }
 
 
-/*return Form::make(new SVenue(), function (Form $form) {
+/*return Form::make(new Venue(), function (Form $form) {
     $form->model()->with(['lease']);
     $form->display('id');
     $form->text('venuename');
@@ -134,7 +126,7 @@ class SVenueController extends AdminController
         $table->text('value');
         $table->text('desc');
     });
-//            $form->checkbox('lease', '租赁方式')->options(RLease::all()->pluck('title', 'id'));
+//            $form->checkbox('lease', '租赁方式')->options(Lease::all()->pluck('title', 'id'));
 //            $form->checkbox('lease', '租赁方1式')
 //                ->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name'])
 //                ->saving(function ($value) {

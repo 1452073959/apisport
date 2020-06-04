@@ -3,16 +3,14 @@
 namespace App\Admin\Repositories;
 
 use Dcat\Admin\Repositories\EloquentRepository;
-use App\Models\SVenue as SVenueModel;
+use App\Models\Lease as RLeaseModel;
 
-class SVenue extends EloquentRepository
+class Lease extends EloquentRepository
 {
     /**
      * Model.
      *
      * @var string
      */
-    protected $eloquentClass = SVenueModel::class;
-
-
+    protected $eloquentClass = RLeaseModel::class;
 }

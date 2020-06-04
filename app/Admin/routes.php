@@ -22,7 +22,7 @@ Route::group([
     //用户
     $router->resource('users', 'UserController');
     //场馆
-    $router->resource('venue', 'SVenueController');
+    $router->resource('venue', 'VenueController');
     //约球订单
     $router->resource('sportorder', 'SportOrderController');
     //商城

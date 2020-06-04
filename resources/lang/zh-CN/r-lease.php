@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'RLease' => 'RLease',
+        'Lease' => 'Lease',
     ],
     'fields' => [
         'title' => '方式名称',

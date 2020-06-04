@@ -3,14 +3,16 @@
 namespace App\Admin\Repositories;
 
 use Dcat\Admin\Repositories\EloquentRepository;
-use App\Models\RLease as RLeaseModel;
+use App\Models\Venue as SVenueModel;
 
-class RLease extends EloquentRepository
+class Venue extends EloquentRepository
 {
     /**
      * Model.
      *
      * @var string
      */
-    protected $eloquentClass = RLeaseModel::class;
+    protected $eloquentClass = SVenueModel::class;
+
+
 }
