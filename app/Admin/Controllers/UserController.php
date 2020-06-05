@@ -18,23 +18,17 @@ class UserController extends AdminController
     protected function grid()
     {
         return Grid::make(new User(), function (Grid $grid) {
+            $grid->model()->with(['member']);
             $grid->id->sortable();
             $grid->name;
+
 //            $grid->avatarurl->image()->setAttributes(['width' => '4px']);;
-            $grid->openid;
-            $grid->membership->display(function($text) {
-                if($text==0)
-                {
-                    return '非会员';
-                }
-                if($text==1) {
-                    return '会员';
-                }
-            });
-            $grid->end_time;
+            $grid->weapp_openid;
+            $grid->column('member.membership','会员卡')->using([0 => '未激活', 1 => '会员']);
+            $grid->column('member.end_time','会员到期时间');
             $grid->created_at;
 //            $grid->updated_at->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
         

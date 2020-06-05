@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use Response;
 use App\Http\Controllers\Controller as BaseController;
+use App\Models\User;
 class Controller extends BaseController
 {
     use Helpers;
+
+
     /**
      * @var int
 

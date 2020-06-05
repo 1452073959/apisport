@@ -25,11 +25,11 @@ class SMemberOrderController extends AdminController
             $grid->id->sortable();
 //            $grid->user_id;
 //            $grid->member.cardname;
-            $grid->column('user.name','会员昵称');
+            $grid->column('user.nickname','会员昵称');
             $grid->column('member.cardname','会员卡类型');
             $grid->open_money;
             $grid->open_time;
-            $grid->end_time;
+//            $grid->end_time;
             $grid->ordernum;
 
             $grid->filter(function (Grid\Filter $filter) {

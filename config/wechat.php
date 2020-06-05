@@ -94,8 +94,8 @@ return [
      */
      'mini_program' => [
          'default' => [
-             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID', 'wx0f8e31fa7cdd52bd'),
-             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET', '61ec689d9f424b5c969a44481d83035f'),
+             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID', 'wxe14c531956fe8477'),
+             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET', 'f1bed834cbeceda611246817f7b1058d'),
              'token'   => env('WECHAT_MINI_PROGRAM_TOKEN', ''),
              'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY', ''),
          ],
@@ -107,12 +107,12 @@ return [
      'payment' => [
          'default' => [
              'sandbox'            => env('WECHAT_PAYMENT_SANDBOX', false),
-             'app_id'             => env('WECHAT_PAYMENT_APPID', 'wx0f8e31fa7cdd52bd'),
-             'mch_id'             => env('WECHAT_PAYMENT_MCH_ID', '1579513611'),
-             'key'                => env('WECHAT_PAYMENT_KEY', 'jinhOU12345678966446112377989436'),
+             'app_id'             => env('WECHAT_PAYMENT_APPID', 'wxe14c531956fe8477'),
+             'mch_id'             => env('WECHAT_PAYMENT_MCH_ID', '1598480651'),
+             'key'                => env('WECHAT_PAYMENT_KEY', 'Lanqiu12345678998546545423659865'),
              'cert_path'          => env('WECHAT_PAYMENT_CERT_PATH', 'path/to/cert/apiclient_cert.pem'),    // XXX: 绝对路径！！！！
              'key_path'           => env('WECHAT_PAYMENT_KEY_PATH', 'path/to/cert/apiclient_key.pem'),      // XXX: 绝对路径！！！！
-             'notify_url'         => 'http://example.com/payments/wechat-notify',                           // 默认支付结果通知地址
+             'notify_url'         => 'https://sport.xinxiaxue.cn/api/tongzhi',                           // 默认支付结果通知地址
          ],
          // ...
      ],

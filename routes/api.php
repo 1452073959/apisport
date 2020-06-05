@@ -9,12 +9,9 @@ $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api'
 ], function($api) {
     $api->get('srace', 'SRaceController@srace');
-    //登陆code//
-    $api->get('logincode', 'LoginController@code');
-    //保存用户信息
-    $api->post('userinfo', 'LoginController@updateUserInfo');
+
     //获取用户信息
-    $api->get('getuser', 'LoginController@getuser');
+    $api->get('getuser', 'WechatController@getuser');
     //会员卡列表
     $api->get('member', 'MemberController@memberlist');
     //场馆列表
@@ -29,9 +26,12 @@ $api->version('v1', [
     $api->get('orderlist', 'OrderController@orderlist');
 
 
-    //微信
-    $api->any('wechat', 'WechatController@wechat');
+    //微信登陆
+    $api->any('logincode', 'WechatController@wechat');
     $api->any('xiadan', 'WechatController@xiadan');
+    $api->any('order', 'WechatController@order');
+    $api->any('tongzhi', 'WechatController@tongzhi');
+    $api->any('cache', 'WechatController@cache');
 });
 
 $api->version('v2', function($api) {
