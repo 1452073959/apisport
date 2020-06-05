@@ -17,7 +17,7 @@ $api->version('v1', [
     //会员卡下单
     $api->any('memberxiadan', 'MemberController@memberxiadan');
 //    会员卡接收支付通知
-    $api->any('tongzhi', 'MemberController@tongzhi');
+    $api->any('member/notify', 'MemberController@tongzhi');
 
     $api->any('text', 'MemberController@text');
 
