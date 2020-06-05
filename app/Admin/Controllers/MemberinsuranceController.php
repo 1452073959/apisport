@@ -19,6 +19,7 @@ class MemberinsuranceController extends AdminController
     {
         return Grid::make(new Memberinsurance(), function (Grid $grid) {
             $grid->model()->with(['sportorder']);
+            $grid->model()->where('status', '>', 0)->orderBy('id', 'desc');
             $grid->id->sortable();
 //            $grid->oid;
             $grid->column('sportorder.ordernum','订单号');

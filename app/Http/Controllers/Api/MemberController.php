@@ -139,7 +139,7 @@ class MemberController extends Controller
             // 用户是否支付成功
             $order->paid_at = $data=date('Y-m-d h:i:s',time());; // 更新支付时间为当前时间
             $order->status = 1;
-            $order->total_fee = $message['total_fee']*100;
+            $order->total_fee = $message['total_fee']*0.01;
             $usermember=UserMember::where('user_id',$order['user_id'])->first();
             $newtime=date("Y-m-d h:i:s",strtotime('+'.$order['member']['deadline'].'months',strtotime( $usermember['end_time'])));
             DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime]);
