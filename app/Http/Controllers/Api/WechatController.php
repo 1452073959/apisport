@@ -49,7 +49,6 @@ class WechatController extends Controller
     {
 
         $data=$request->all();
-
         if (!$request->has('token')) {
             return response()->json([
                 'code' => '400',
@@ -98,13 +97,12 @@ class WechatController extends Controller
             ];
             // config('wechat.payment.default.key')为商户的key
             $params['paySign'] = generate_sign($params, config('wechat.payment.default.key'));
-//            dump($params);
+
             return $params;
 
         } else {
             return $result;
         }
-
     }
 
     public function order()
@@ -113,11 +111,10 @@ class WechatController extends Controller
       $a=  $payment->order->queryByOutTradeNumber("20200605155252679125");
         dd($a);
     }
-
+    //通知
     public function tongzhi()
     {
          Cache::put('key1', 1232321);
-
         $app = \EasyWeChat::payment(); // 微信支付
         $response = $app->handlePaidNotify(function($message, $fail){
             // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
