@@ -14,6 +14,13 @@ $api->version('v1', [
     $api->get('getuser', 'WechatController@getuser');
     //会员卡列表
     $api->get('member', 'MemberController@memberlist');
+    //会员卡下单
+    $api->any('memberxiadan', 'MemberController@memberxiadan');
+//    会员卡接收支付通知
+    $api->any('tongzhi', 'MemberController@tongzhi');
+
+    $api->any('text', 'MemberController@text');
+
     //场馆列表
     $api->get('venue', 'VenueController@venue');
     //会员码
@@ -28,9 +35,9 @@ $api->version('v1', [
 
     //微信登陆
     $api->any('logincode', 'WechatController@wechat');
-    $api->any('xiadan', 'WechatController@xiadan');
+
     $api->any('order', 'WechatController@order');
-    $api->any('tongzhi', 'WechatController@tongzhi');
+
     $api->any('cache', 'WechatController@cache');
 });
 
