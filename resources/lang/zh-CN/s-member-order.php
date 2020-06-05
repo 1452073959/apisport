@@ -9,6 +9,7 @@ return [
         'open_money' => '开通价格',
         'open_time' => '开通时间',
         'end_time' => '结束时间',
+        'ordernum' => '订单号',
     ],
     'options' => [
     ],

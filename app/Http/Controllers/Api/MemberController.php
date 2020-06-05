@@ -16,9 +16,11 @@ class MemberController extends Controller
     //会员卡列表
     public function memberlist()
     {
-        $member=SMember::all();
+        $member=SMember::with('order','posts')->get();
         return $member;
     }
+    //会员卡订单
+
 
 
 

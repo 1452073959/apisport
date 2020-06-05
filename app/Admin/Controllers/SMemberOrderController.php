@@ -30,7 +30,8 @@ class SMemberOrderController extends AdminController
             $grid->open_money;
             $grid->open_time;
             $grid->end_time;
-        
+            $grid->ordernum;
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
 

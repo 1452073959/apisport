@@ -27,5 +27,11 @@ Route::group([
     $router->resource('sportorder', 'SportOrderController');
     //商城
     $router->resource('commodity', 'CommodityController');
+    //保险
+    $router->resource('insurance', 'MemberinsuranceController');
+    //商城订单
+    $router->resource('CommodityOrder', 'CommodityOrderController');
+    //订单详情
+    $router->get('orders/{order}', 'OrdersController@show')->name('admin.orders.show');
 
 });

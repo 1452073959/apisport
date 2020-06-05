@@ -51,6 +51,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection open_money
      * @property Grid\Column|Collection open_time
      * @property Grid\Column|Collection end_time
+     * @property Grid\Column|Collection ordernum
      * @property Grid\Column|Collection member_id
      * @property Grid\Column|Collection avatarurl
      * @property Grid\Column|Collection openid
@@ -70,9 +71,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection venueserve
      * @property Grid\Column|Collection extra
      * @property Grid\Column|Collection lease
-     * @property Grid\Column|Collection memerprice
-     * @property Grid\Column|Collection img
-     * @property Grid\Column|Collection repertory
      * @property Grid\Column|Collection no
      * @property Grid\Column|Collection ordertitle
      * @property Grid\Column|Collection vid
@@ -81,6 +79,15 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection paid_at
      * @property Grid\Column|Collection payment_no
      * @property Grid\Column|Collection invoice
+     * @property Grid\Column|Collection memerprice
+     * @property Grid\Column|Collection img
+     * @property Grid\Column|Collection repertory
+     * @property Grid\Column|Collection oid
+     * @property Grid\Column|Collection card
+     * @property Grid\Column|Collection startdate
+     * @property Grid\Column|Collection enddate
+     * @property Grid\Column|Collection ship_status
+     * @property Grid\Column|Collection ship_data
      * @property Grid\Column|Collection parent_id
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection icon
@@ -91,15 +98,14 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
      * @property Grid\Column|Collection sales
-     * @property Grid\Column|Collection ship_status
-     * @property Grid\Column|Collection ship_data
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
+     * @property Grid\Column|Collection venue_id
      * @property Grid\Column|Collection token
-     * @property Grid\Column|Collection mode
+     * @property Grid\Column|Collection insurance
      * @property Grid\Column|Collection s_venue_id
      * @property Grid\Column|Collection r_lease_id
      * @property Grid\Column|Collection code
@@ -145,6 +151,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection open_money(string $label = null)
      * @method Grid\Column|Collection open_time(string $label = null)
      * @method Grid\Column|Collection end_time(string $label = null)
+     * @method Grid\Column|Collection ordernum(string $label = null)
      * @method Grid\Column|Collection member_id(string $label = null)
      * @method Grid\Column|Collection avatarurl(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
@@ -164,9 +171,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection venueserve(string $label = null)
      * @method Grid\Column|Collection extra(string $label = null)
      * @method Grid\Column|Collection lease(string $label = null)
-     * @method Grid\Column|Collection memerprice(string $label = null)
-     * @method Grid\Column|Collection img(string $label = null)
-     * @method Grid\Column|Collection repertory(string $label = null)
      * @method Grid\Column|Collection no(string $label = null)
      * @method Grid\Column|Collection ordertitle(string $label = null)
      * @method Grid\Column|Collection vid(string $label = null)
@@ -175,6 +179,15 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection paid_at(string $label = null)
      * @method Grid\Column|Collection payment_no(string $label = null)
      * @method Grid\Column|Collection invoice(string $label = null)
+     * @method Grid\Column|Collection memerprice(string $label = null)
+     * @method Grid\Column|Collection img(string $label = null)
+     * @method Grid\Column|Collection repertory(string $label = null)
+     * @method Grid\Column|Collection oid(string $label = null)
+     * @method Grid\Column|Collection card(string $label = null)
+     * @method Grid\Column|Collection startdate(string $label = null)
+     * @method Grid\Column|Collection enddate(string $label = null)
+     * @method Grid\Column|Collection ship_status(string $label = null)
+     * @method Grid\Column|Collection ship_data(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
@@ -185,15 +198,14 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
      * @method Grid\Column|Collection sales(string $label = null)
-     * @method Grid\Column|Collection ship_status(string $label = null)
-     * @method Grid\Column|Collection ship_data(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
+     * @method Grid\Column|Collection venue_id(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
-     * @method Grid\Column|Collection mode(string $label = null)
+     * @method Grid\Column|Collection insurance(string $label = null)
      * @method Grid\Column|Collection s_venue_id(string $label = null)
      * @method Grid\Column|Collection r_lease_id(string $label = null)
      * @method Grid\Column|Collection code(string $label = null)
@@ -244,6 +256,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection open_money
      * @property Show\Field|Collection open_time
      * @property Show\Field|Collection end_time
+     * @property Show\Field|Collection ordernum
      * @property Show\Field|Collection member_id
      * @property Show\Field|Collection avatarurl
      * @property Show\Field|Collection openid
@@ -263,9 +276,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection venueserve
      * @property Show\Field|Collection extra
      * @property Show\Field|Collection lease
-     * @property Show\Field|Collection memerprice
-     * @property Show\Field|Collection img
-     * @property Show\Field|Collection repertory
      * @property Show\Field|Collection no
      * @property Show\Field|Collection ordertitle
      * @property Show\Field|Collection vid
@@ -274,6 +284,15 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection paid_at
      * @property Show\Field|Collection payment_no
      * @property Show\Field|Collection invoice
+     * @property Show\Field|Collection memerprice
+     * @property Show\Field|Collection img
+     * @property Show\Field|Collection repertory
+     * @property Show\Field|Collection oid
+     * @property Show\Field|Collection card
+     * @property Show\Field|Collection startdate
+     * @property Show\Field|Collection enddate
+     * @property Show\Field|Collection ship_status
+     * @property Show\Field|Collection ship_data
      * @property Show\Field|Collection parent_id
      * @property Show\Field|Collection order
      * @property Show\Field|Collection icon
@@ -284,15 +303,14 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
      * @property Show\Field|Collection sales
-     * @property Show\Field|Collection ship_status
-     * @property Show\Field|Collection ship_data
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
+     * @property Show\Field|Collection venue_id
      * @property Show\Field|Collection token
-     * @property Show\Field|Collection mode
+     * @property Show\Field|Collection insurance
      * @property Show\Field|Collection s_venue_id
      * @property Show\Field|Collection r_lease_id
      * @property Show\Field|Collection code
@@ -338,6 +356,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection open_money(string $label = null)
      * @method Show\Field|Collection open_time(string $label = null)
      * @method Show\Field|Collection end_time(string $label = null)
+     * @method Show\Field|Collection ordernum(string $label = null)
      * @method Show\Field|Collection member_id(string $label = null)
      * @method Show\Field|Collection avatarurl(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
@@ -357,9 +376,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection venueserve(string $label = null)
      * @method Show\Field|Collection extra(string $label = null)
      * @method Show\Field|Collection lease(string $label = null)
-     * @method Show\Field|Collection memerprice(string $label = null)
-     * @method Show\Field|Collection img(string $label = null)
-     * @method Show\Field|Collection repertory(string $label = null)
      * @method Show\Field|Collection no(string $label = null)
      * @method Show\Field|Collection ordertitle(string $label = null)
      * @method Show\Field|Collection vid(string $label = null)
@@ -368,6 +384,15 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection paid_at(string $label = null)
      * @method Show\Field|Collection payment_no(string $label = null)
      * @method Show\Field|Collection invoice(string $label = null)
+     * @method Show\Field|Collection memerprice(string $label = null)
+     * @method Show\Field|Collection img(string $label = null)
+     * @method Show\Field|Collection repertory(string $label = null)
+     * @method Show\Field|Collection oid(string $label = null)
+     * @method Show\Field|Collection card(string $label = null)
+     * @method Show\Field|Collection startdate(string $label = null)
+     * @method Show\Field|Collection enddate(string $label = null)
+     * @method Show\Field|Collection ship_status(string $label = null)
+     * @method Show\Field|Collection ship_data(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
@@ -378,15 +403,14 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
      * @method Show\Field|Collection sales(string $label = null)
-     * @method Show\Field|Collection ship_status(string $label = null)
-     * @method Show\Field|Collection ship_data(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
+     * @method Show\Field|Collection venue_id(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
-     * @method Show\Field|Collection mode(string $label = null)
+     * @method Show\Field|Collection insurance(string $label = null)
      * @method Show\Field|Collection s_venue_id(string $label = null)
      * @method Show\Field|Collection r_lease_id(string $label = null)
      * @method Show\Field|Collection code(string $label = null)
