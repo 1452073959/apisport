@@ -42,7 +42,7 @@ class MemberController extends Controller
             $insurance->name=$data['receipts']['name'];
             $insurance->card=$data['receipts']['card'];
             $insurance->startdate=$data['receipts']['startdate'];
-            $insurance->enddate=$data['receipts']['startdate'];
+            $insurance->enddate=$data['receipts']['enddate'];
             $insurance->save();
         }
         $payment = \EasyWeChat::payment(); // 微信支付
@@ -51,8 +51,9 @@ class MemberController extends Controller
             'out_trade_no' => $order['ordernum'],
             'trade_type' => 'JSAPI',  // 必须为JSAPI
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
-            'total_fee' => $data['money']*100+$data['receipts']['money']*100, // 总价
-            'notify_url'=> config('app.url').'member/notify'
+            'total_fee' => $data['money']*100+$data['receipts']['money'], // 总价
+//            'notify_url'=> config('app.url').'member/notify'
+            'notify_url'=>'https://sport.xinxiaxue.cn/api/member/notify'
         ]);
 
 // 如果成功生成统一下单的订单，那么进行二次签名
@@ -94,6 +95,7 @@ class MemberController extends Controller
                 $usermember=UserMember::where('user_id',$order['user_id'])->first();
                 $newtime=date("Y-m-d h:i:s",strtotime('+'.$order.['member']['deadline'].'months',strtotime( $usermember['end_time'])));
                 DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime]);
+                DB::table('memberinsurance')->where('oid',$order['id'])->update(['status' => 1]);
             } else {
                 $order->status = 0;
                 return $fail('通信失败，请稍后再通知我');

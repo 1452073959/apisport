@@ -125,8 +125,9 @@ class WechatController extends Controller
             }
             if ($message['return_code'] === 'SUCCESS') { // return_code 表示通信状态，不代表支付状态
                 // 用户是否支付成功
-                    $order->paid_at = $data=date('Y-m-d h:i:s',time());; // 更新支付时间为当前时间
+                    $order->paid_at = date('Y-m-d h:i:s',time());; // 更新支付时间为当前时间
                     $order->status = 1;
+                    $order->total_fee = $message['$message']*100;
             } else {
                 $order->status = 0;
                 return $fail('通信失败，请稍后再通知我');
