@@ -20,8 +20,7 @@ class UserController extends AdminController
         return Grid::make(new User(), function (Grid $grid) {
             $grid->model()->with(['member']);
             $grid->id->sortable();
-            $grid->name;
-
+            $grid->nickname;
 //            $grid->avatarurl->image()->setAttributes(['width' => '4px']);;
             $grid->weapp_openid;
             $grid->column('member.membership','会员卡')->using([0 => '未激活', 1 => '会员']);
