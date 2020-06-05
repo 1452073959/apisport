@@ -83,8 +83,9 @@ class MemberController extends Controller
         $app = \EasyWeChat::payment(); // 微信支付
         $response = $app->handlePaidNotify(function($message, $fail){
             // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
-            Cache::put('key',$message );
+            Cache::put('key',$message);
             $order = SMemberOrder::with('member')->where('ordernum',$message['out_trade_no'])->first();
+
             if (!$order || $order['paid_at']) { // 如果订单不存在 或者 订单已经支付过了
                 return ; // 告诉微信，我已经处理完了，订单没找到，别再通知我了
             }
@@ -92,14 +93,14 @@ class MemberController extends Controller
                 // 用户是否支付成功
                 $order->paid_at = $data=date('Y-m-d h:i:s',time());; // 更新支付时间为当前时间
                 $order->status = 1;
-                $order->total_fee = $message['$message']*100;
+                $order->total_fee = $message['total_fee']*100;
                 $usermember=UserMember::where('user_id',$order['user_id'])->first();
-                $newtime=date("Y-m-d h:i:s",strtotime('+'.$order.['member']['deadline'].'months',strtotime( $usermember['end_time'])));
+                $newtime=date("Y-m-d h:i:s",strtotime('+'.$order['member']['deadline'].'months',strtotime( $usermember['end_time'])));
                 DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime]);
                 DB::table('memberinsurance')->where('oid',$order['id'])->update(['status' => 1]);
             } else {
                 $order->status = 0;
-                return $fail('通信失败，请稍后再通知我');
+            return $fail('通信失败，请稍后再通知我');
             }
             $order->save();
 
@@ -107,16 +108,48 @@ class MemberController extends Controller
         return $response;
     }
 
-//    public function text()
-//    {
-//        $order = SMemberOrder::with('member')->where('ordernum',20200605182538718406)->first();
-//        $usermember=UserMember::where('user_id',$order['user_id'])->first();
-//        dump($usermember->toarray());
-//        $newtime=date("Y-m-d h:i:s",strtotime('+'.$order['member']['deadline'].'months',strtotime($usermember['end_time'])));
-//        dump($newtime);
-//        $usermember=DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime]);
-//        dump($usermember);
-//    }
+    public function text()
+    {
+        $message=[
+            "appid" => "wxe14c531956fe8477",
+  "bank_type" => "OTHERS",
+  "cash_fee" => "2",
+  "fee_type" => "CNY",
+  "is_subscribe" => "N",
+  "mch_id" => "1598480651",
+  "nonce_str" => "5eda2eeaa3176",
+  "openid" => "oOYX_411zteT-ZIPCk2NSZUsCAk0",
+  "out_trade_no" => "20200605193922921978",
+  "result_code" => "SUCCESS",
+  "return_code" => "SUCCESS",
+  "sign" => "D4870A842F80056D35ACA94A454B96BA",
+  "time_end" => "20200605194116",
+  "total_fee" => "2",
+  "trade_type" => "JSAPI",
+  "transaction_id" => "4200000530202006058032048839",
+        ];
+
+        Cache::put('key',$message);
+        $order = SMemberOrder::with('member')->where('ordernum',$message['out_trade_no'])->first();
+
+        if (!$order || $order['paid_at']) { // 如果订单不存在 或者 订单已经支付过了
+            return ; // 告诉微信，我已经处理完了，订单没找到，别再通知我了
+        }
+        if ($message['return_code'] === 'SUCCESS') { // return_code 表示通信状态，不代表支付状态
+            // 用户是否支付成功
+            $order->paid_at = $data=date('Y-m-d h:i:s',time());; // 更新支付时间为当前时间
+            $order->status = 1;
+            $order->total_fee = $message['total_fee']*100;
+            $usermember=UserMember::where('user_id',$order['user_id'])->first();
+            $newtime=date("Y-m-d h:i:s",strtotime('+'.$order['member']['deadline'].'months',strtotime( $usermember['end_time'])));
+            DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime]);
+            DB::table('memberinsurance')->where('oid',$order['id'])->update(['status' => 1]);
+        } else {
+            $order->status = 0;
+//            return $fail('通信失败，请稍后再通知我');
+        }
+        $order->save();
+    }
 
 
 
