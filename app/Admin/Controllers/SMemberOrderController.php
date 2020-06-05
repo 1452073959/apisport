@@ -22,13 +22,14 @@ class SMemberOrderController extends AdminController
             // 关联 profile 表数据
             $grid->model()->with(['member']);
             $grid->model()->with(['user']);
+            $grid->model()->where('status', '>', 0)->orderBy('paid_at', 'desc');
             $grid->id->sortable();
 //            $grid->user_id;
 //            $grid->member.cardname;
             $grid->column('user.nickname','会员昵称');
             $grid->column('member.cardname','会员卡类型');
             $grid->open_money;
-            $grid->open_time;
+//            $grid->open_time;
 //            $grid->end_time;
             $grid->ordernum;
 
