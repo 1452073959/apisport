@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        CalculateInstallmentFine::class
+//        CalculateInstallmentFine::class
+
     ];
 
     /**
@@ -29,7 +30,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         // daily() 代表每天凌晨 00:00 执行
-        $schedule->command('cron:calculate-installment-fine')->daily();
+        $schedule->command('CalculateInstallmentFine')->daily();
     }
 
     /**
