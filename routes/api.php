@@ -18,13 +18,16 @@ $api->version('v1', [
     $api->any('memberxiadan', 'MemberController@memberxiadan');
 //    会员卡接收支付通知
     $api->any('member/notify', 'MemberController@tongzhi');
+    //会员码核销
+    $api->get('membercode', 'MemberController@membercode');
 
     $api->any('text', 'CommodityController@text');
-
     //场馆列表
     $api->get('venue', 'VenueController@venue');
-    //会员码
-    $api->get('membercode', 'MemberController@membercode');
+    //场馆下单
+    $api->any('venuexiadan', 'VenueController@venuexiadan');
+    //场馆下单消息通知
+    $api->any('venue/notify', 'VenueController@tongzhi');
     //商品列表
     $api->get('commodity', 'CommodityController@commoditylist');
     //商品下单
