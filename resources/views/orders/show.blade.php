@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>收货地址</td>
-                <td colspan="3">{{ $order->address['address'] }}{{ $order->address['zip'] }} {{ $order->address['contact_name'] }} {{ $order->address['contact_phone'] }}</td>
+                <td colspan="3">{{ $order->address['address'] }}</td>
             </tr>
             <tr>
                 <td rowspan="">商品名称</td>
