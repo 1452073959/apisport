@@ -21,7 +21,7 @@ class WechatController extends Controller
         $wq = $app->auth->session($data['code']); // $code 为wx.login里的code
 //        dd($wq);
         if (isset($wq['errcode'])) {
-            return $this->success('code已过期或不正确');
+            return $this->failed('code已过期或不正确');
         }
         $weappOpenid = $wq['openid'];
         $weixinSessionKey = $wq['session_key'];
