@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use EasyWeChat\Factory;
 use App\Models\User;
+use Cache;
 use function EasyWeChat\Kernel\Support\generate_sign;
 class CommodityController extends Controller
 {
