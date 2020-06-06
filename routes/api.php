@@ -20,6 +20,8 @@ $api->version('v1', [
     $api->any('member/notify', 'MemberController@tongzhi');
     //会员码核销
     $api->get('membercode', 'MemberController@membercode');
+    //会员记录
+    $api->get('record', 'MemberController@record');
 
     $api->any('text', 'CommodityController@text');
     //场馆列表
@@ -28,6 +30,8 @@ $api->version('v1', [
     $api->any('venuexiadan', 'VenueController@venuexiadan');
     //场馆下单消息通知
     $api->any('venue/notify', 'VenueController@tongzhi');
+    //约球订单查询
+    $api->get('venuerecord', 'VenueController@venuerecord');
     //约球核销
     $api->any('/sport', 'VenueController@sport');
     //商品列表
@@ -38,6 +42,8 @@ $api->version('v1', [
     $api->any('commodity/notify', 'CommodityController@tongzhi');
     //商品发货
     $api->post('commodity/shipments', 'CommodityController@shipments');
+    //商场订单
+    $api->get('commodityrecord', 'CommodityController@record');
     //下单
     $api->post('adjorder', 'OrderController@adjorder');
     //订单查询

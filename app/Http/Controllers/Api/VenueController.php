@@ -117,4 +117,17 @@ class VenueController extends Controller
 
     }
 
+    //查询约球记录
+    public function venuerecord(Request $request)
+    {
+        $data=$request->all();
+        $where=[];
+        if ($request->input('status')) {
+            $where[] = ['status', $request->input('status')];
+        }
+        $user=User::with('member')->where('token',$data['token'])->first();
+        $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->get();
+        return $this->success($record);
+    }
+
 }

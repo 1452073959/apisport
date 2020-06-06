@@ -121,7 +121,19 @@ class CommodityController extends Controller
         ]);
 
         return $this->success('发货成功');
+    }
 
+    //查询商城记录
+    public function record(Request $request)
+    {
+        $data=$request->all();
+        $where=[];
+        if ($request->input('status')) {
+            $where[] = ['status', $request->input('status')];
+        }
+        $user=User::with('member')->where('token',$data['token'])->first();
+        $record=CommodityOrder::with('Commodity','user')->where('user_id',$user['id'])->where($where)->get();
+        return $this->success($record);
     }
 
 }
