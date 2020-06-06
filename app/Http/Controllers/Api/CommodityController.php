@@ -28,7 +28,10 @@ class CommodityController extends Controller
     public function commodityxiadan(Request $request)
     {
         $data = $request->all();
+        //获取用户信息
+        $user=User::with('member')->where('token',$data['token'])->first();
         $order=new CommodityOrder();
+        $order->user_id=$user['id'];
         $order->cid=$data['cid'];
         $order->money=$data['money'];
         $order->name=$data['name'];
@@ -36,11 +39,9 @@ class CommodityController extends Controller
         $order->address=$data['address'];
         $order->save();
 //        dd($order->toArray());
-        //获取用户信息
-        $user=User::with('member')->where('token',$data['token'])->first();
         $payment = \EasyWeChat::payment(); // 微信支付
         $result = $payment->order->unify([
-            'body' => '你自己想写的111名称',
+            'body' => $data['title'],
             'out_trade_no' => $order['no'],
             'trade_type' => 'JSAPI',  // 必须为JSAPI
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
