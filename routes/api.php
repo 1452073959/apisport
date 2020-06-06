@@ -19,7 +19,7 @@ $api->version('v1', [
 //    会员卡接收支付通知
     $api->any('member/notify', 'MemberController@tongzhi');
 
-    $api->any('text', 'MemberController@text');
+    $api->any('text', 'CommodityController@text');
 
     //场馆列表
     $api->get('venue', 'VenueController@venue');

@@ -81,7 +81,7 @@ class CommodityController extends Controller
                 // 用户是否支付成功
                 $order->paid_at = date('Y-m-d H:i:s',time());; // 更新支付时间为当前时间
                 $order->status = 1;
-                $order->total_fee = $message['total_fee']*100;
+                $order->total_fee = $message['total_fee']*0.01;
             } else {
                 $order->status = 0;
                 return $fail('通信失败，请稍后再通知我');
@@ -91,4 +91,6 @@ class CommodityController extends Controller
         });
         return $response;
     }
+
+
 }
