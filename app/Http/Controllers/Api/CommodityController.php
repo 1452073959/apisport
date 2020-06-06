@@ -44,6 +44,7 @@ class CommodityController extends Controller
             'trade_type' => 'JSAPI',  // 必须为JSAPI
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
             'total_fee' => $data['money']*100, // 总价
+            'notify_url'=>'https://sport.xinxiaxue.cn/api/commodity/notify'
         ]);
         // 如果成功生成统一下单的订单，那么进行二次签名
         if ($result['return_code'] === 'SUCCESS') {
@@ -54,7 +55,6 @@ class CommodityController extends Controller
                 'nonceStr' => $result['nonce_str'],
                 'package' => 'prepay_id=' . $result['prepay_id'],
                 'signType' => 'MD5',
-                'notify_url'=>'https://shop.xinxiaxue.cn/commodity/notify'
             ];
             $params['paySign'] = generate_sign($params, config('wechat.payment.default.key'));
             return $params;
