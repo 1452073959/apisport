@@ -9,6 +9,7 @@ use function EasyWeChat\Kernel\Support\generate_sign;
 use App\Http\Controllers\Api\Controller;
 use App\Models\User;
 use Cache;
+use Carbon\Carbon;
 class VenueController extends Controller
 {
     //场馆信息
@@ -28,6 +29,14 @@ class VenueController extends Controller
     public function venuexiadan(Request $request)
     {
         $data = $request->all();
+        $yy= SportOrder::where('type',1)->where('status',1)->get();
+        foreach ($yy as $key=>$val)
+        {
+            if(Carbon::createFromFormat("Y-m-d H:i:s",$data['starttime'])->between($val['starttime'], $val['endtime']))
+            {
+                return $this->failed('当前时间段已有预约');
+            }
+        }
         //获取用户信息
         $user=User::with('member')->where('token',$data['token'])->first();
         $order=new SportOrder();
@@ -128,6 +137,11 @@ class VenueController extends Controller
         $user=User::with('member')->where('token',$data['token'])->first();
         $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->get();
         return $this->success($record);
+    }
+
+    public function yuyue(Request $request)
+    {
+
     }
 
 }
