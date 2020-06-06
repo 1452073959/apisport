@@ -4,7 +4,7 @@ return [
         'User' => '用户',
     ],
     'fields' => [
-        'name' => '昵称',
+        'nickname' => '昵称',
         'avatarurl' => '头像',
         'weapp_openid' => '微信id',
         'membership' => '是员',
