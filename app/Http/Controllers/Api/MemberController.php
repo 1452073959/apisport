@@ -53,7 +53,7 @@ class MemberController extends Controller
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
             'total_fee' => $data['money']*100+$data['receipts']['money'], // 总价
 //            'notify_url'=> config('app.url').'member/notify'
-            'notify_url'=>'https://sport.xinxiaxue.cn/api/member/notify'
+            'notify_url'=>config('app.url').'api/member/notify'
         ]);
 
 // 如果成功生成统一下单的订单，那么进行二次签名

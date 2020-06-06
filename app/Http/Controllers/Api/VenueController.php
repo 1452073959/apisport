@@ -49,7 +49,7 @@ class VenueController extends Controller
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
             'total_fee' => $data['money']*100, // 总价
 //            'notify_url'=> config('app.url').'member/notify'
-            'notify_url'=>'https://sport.xinxiaxue.cn/api/venue/notify'
+            'notify_url'=>config('app.url').'api/venue/notify'
         ]);
         // 如果成功生成统一下单的订单，那么进行二次签名
         if ($result['return_code'] === 'SUCCESS') {
