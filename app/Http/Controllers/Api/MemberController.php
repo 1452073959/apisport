@@ -33,7 +33,9 @@ class MemberController extends Controller
         $order->user_id=$user['id'];
         $order->member_id=$data['member'];
         $order->open_money=$data['money'];
-        $order->insurance=$data['insurance'];
+        if(isset($data['insurance'])){
+            $order->insurance=$data['insurance'];
+        }
         $order->save();
         if($order['insurance']==1){
             $insurance=new Memberinsurance();
@@ -51,7 +53,7 @@ class MemberController extends Controller
             'out_trade_no' => $order['ordernum'],
             'trade_type' => 'JSAPI',  // 必须为JSAPI
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
-            'total_fee' => $data['money']*100+$data['receipts']['money'], // 总价
+            'total_fee' => $data['money']*100+$data['receipts']['money']*100, // 总价
 //            'notify_url'=> config('app.url').'member/notify'
             'notify_url'=>config('app.url').'api/member/notify'
         ]);
