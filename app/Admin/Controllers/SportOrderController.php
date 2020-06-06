@@ -6,6 +6,7 @@ use App\Models\SportOrder;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
+
 use Dcat\Admin\Controllers\AdminController;
 
 class SportOrderController extends AdminController
@@ -18,23 +19,31 @@ class SportOrderController extends AdminController
     protected function grid()
     {
         return Grid::make(new SportOrder(), function (Grid $grid) {
-            $grid->id->sortable();
+//            $grid->id->sortable();
+            $grid->model()->where('status', '>', 0)->orderBy('paid_at', 'desc');
+            $grid->model()->with(['venue']);
+            $grid->model()->with(['user']);
+            $grid->type->using([0 => '散客', 1 => '整场']);
             $grid->no;
-            $grid->ordertitle;
-            $grid->vid;
-            $grid->uid;
+            $grid->column('venue.venuename','场馆');
+            $grid->column('user.nickname','会员昵称');
             $grid->starttime;
             $grid->endtime;
             $grid->money;
             $grid->paid_at;
-            $grid->payment_no;
-            $grid->status;
-            $grid->invoice;
+
+//            $grid->payment_no;
+            $grid->status->using([1 => '未使用', 2 => '已使用']);
+//            $grid->invoice;
         
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
         
             });
+            //关闭新增按钮
+            $grid->disableCreateButton();
+            //关闭操作
+            $grid->disableActions();
         });
     }
 
@@ -63,6 +72,7 @@ class SportOrderController extends AdminController
         });
     }
 
+
     /**
      * Make a form builder.
      *
@@ -85,4 +95,5 @@ class SportOrderController extends AdminController
             $form->text('invoice');
         });
     }
+
 }

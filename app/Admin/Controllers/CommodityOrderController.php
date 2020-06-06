@@ -34,7 +34,7 @@ class CommodityOrderController extends AdminController
             $grid->status->using([0 => '未支付', 1 => '未发货',2=>'已发货']);
 //            $grid->invoice;
 //            $grid->ship_status;
-            $grid->ship_data;
+//            $grid->ship_data;
         
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
@@ -56,23 +56,12 @@ class CommodityOrderController extends AdminController
      */
     public  function show($id ,Content $content)
     {
+//        dd( \App\Models\CommodityOrder::find($id)->toarray());
         return $content->header('Post')
             ->description('详情')
             ->body(view('orders.show', ['order' => \App\Models\CommodityOrder::find($id)]));
     }
-//    //订单详情
-//    public function show($id, Content $content)
-//    {
-//        return $content
-//            ->header('查看订单')
-//            // body 方法可以接受 Laravel 的视图作为参数
-//            ->body(view('admin.orders.show', ['order' => Order::find($id)]));
-//    }
-    /**
-     * Make a form builder.
-     *
-     * @return Form
-     */
+
     protected function form()
     {
         return Form::make(new CommodityOrder(), function (Form $form) {

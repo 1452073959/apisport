@@ -3,7 +3,7 @@
 <div>
     <form class="layui-form" id="myform" name="myform1">
         <div class="layui-form-item">
-            <label class="layui-form-label">请输入会员码</label>
+            <label class="layui-form-label">会员码</label>
             <div class="layui-input-block">
                 <input type="text" name="code"   lay-verify="required" placeholder="请输入会员码" autocomplete="off" class="layui-input">
             </div>
@@ -11,7 +11,6 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button  type="button" class="layui-btn" id="h">立即提交</button>
-
             </div>
         </div>
     </form>

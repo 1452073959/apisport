@@ -23,7 +23,7 @@ class SMemberOrderController extends AdminController
             $grid->model()->with(['member']);
             $grid->model()->with(['user']);
             $grid->model()->where('status', '>', 0)->orderBy('paid_at', 'desc');
-            $grid->id->sortable();
+//            $grid->id->sortable();
 //            $grid->user_id;
 //            $grid->member.cardname;
             $grid->column('user.nickname','会员昵称');

@@ -21,7 +21,9 @@ class CommodityOrder extends Model
     protected $dates = [
         'paid_at',
     ];
-
+    protected $casts = [
+        'ship_data' => 'json',
+    ];
     protected static function boot()
     {
         parent::boot();

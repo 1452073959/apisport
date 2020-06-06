@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'SportOrder' => 'SportOrder',
+        'SportOrder' => '约球订单',
     ],
     'fields' => [
         'no' => '订单流水号',
@@ -15,6 +15,7 @@ return [
         'payment_no' => '//微信订单号',
         'status' => '订单状态',
         'invoice' => '发票',
+        'type'=>'类型'
     ],
     'options' => [
     ],

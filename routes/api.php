@@ -28,12 +28,16 @@ $api->version('v1', [
     $api->any('venuexiadan', 'VenueController@venuexiadan');
     //场馆下单消息通知
     $api->any('venue/notify', 'VenueController@tongzhi');
+    //约球核销
+    $api->any('/sport', 'VenueController@sport');
     //商品列表
     $api->get('commodity', 'CommodityController@commoditylist');
     //商品下单
     $api->any('commodityxiadan', 'CommodityController@commodityxiadan');
 //    商品支付通知
     $api->any('commodity/notify', 'CommodityController@tongzhi');
+    //商品发货
+    $api->post('commodity/shipments', 'CommodityController@shipments');
     //下单
     $api->post('adjorder', 'OrderController@adjorder');
     //订单查询

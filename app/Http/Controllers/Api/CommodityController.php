@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Commodity;
 use App\Models\CommodityOrder;
+use App\Models\SportOrder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use EasyWeChat\Factory;
 use App\Models\User;
 use Cache;
+use App\Exceptions\InvalidRequestException;
 use function EasyWeChat\Kernel\Support\generate_sign;
+use Illuminate\Support\Facades\DB;
+
 class CommodityController extends Controller
 {
     //
@@ -93,5 +97,31 @@ class CommodityController extends Controller
         return $response;
     }
 
+
+    //订单发货
+    public function shipments(SportOrder $order, Request $request)
+    {
+        // 判断当前订单是否已支付
+        $id=$request->id;
+//        dd($id);
+        $data=$request->all();
+            unset($data['id']);
+        if($data['express_company']==null){
+            return $this->success('请填写物流公司');
+        }
+        if($data['express_no']==null){
+            return $this->success('请填写单号');
+        }
+        // 将订单发货状态改为已发货，并存入物流信息
+        DB::table('commodity_order')->where('id',$id)->update([
+            'status' => 2,
+            // 我们在 Order 模型的 $casts 属性里指明了 ship_data 是一个数组
+            // 因此这里可以直接把数组传过去
+            'ship_data'   => $data,
+        ]);
+
+        return $this->success('发货成功');
+
+    }
 
 }

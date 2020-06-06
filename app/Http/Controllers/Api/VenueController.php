@@ -69,7 +69,6 @@ class VenueController extends Controller
 
     }
 
-
     //通知
     public function tongzhi()
     {
@@ -96,6 +95,26 @@ class VenueController extends Controller
 
         });
         return $response;
+    }
+
+    public function sport(Request $request)
+    {
+        $data=$request->all();
+        if($data['code']==''){
+            return $this->success('请输入订单号');
+        }
+        $order=SportOrder::where('no',$data['code'])->first();
+        if(!$order){
+            return $this->success('该订单不存在');
+        }else{
+            if($order['codenot']==2){
+                return $this->success('该会员码今日已使用');
+            }
+            $order->codenot=2;
+            $order->save();
+            return $this->success('约球订单核销成功');
+        }
+
     }
 
 }

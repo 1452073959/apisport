@@ -1,7 +1,7 @@
 <?php 
 return [
     'labels' => [
-        'SRace' => 'SRace',
+        'SRace' => '赛事',
     ],
     'fields' => [
         'projectname' => '赛事名称',
