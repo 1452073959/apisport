@@ -27,6 +27,10 @@ $api->version('v1', [
     $api->get('membercode', 'MemberController@membercode');
     //商品列表
     $api->get('commodity', 'CommodityController@commoditylist');
+    //商品下单
+    $api->any('commodityxiadan', 'CommodityController@commodityxiadan');
+//    商品支付通知
+    $api->any('commodity/notify', 'CommodityController@tongzhi');
     //下单
     $api->post('adjorder', 'OrderController@adjorder');
     //订单查询

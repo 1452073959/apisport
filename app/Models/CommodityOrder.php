@@ -61,4 +61,8 @@ class CommodityOrder extends Model
         return json_decode($extra, true);
     }
 
+    public function setAddressAttribute($value)
+    {
+        $this->attributes['address'] = json_encode($value);
+    }
 }

@@ -97,9 +97,7 @@ class WechatController extends Controller
             ];
             // config('wechat.payment.default.key')为商户的key
             $params['paySign'] = generate_sign($params, config('wechat.payment.default.key'));
-
             return $params;
-
         } else {
             return $result;
         }
