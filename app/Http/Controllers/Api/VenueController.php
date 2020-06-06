@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use function EasyWeChat\Kernel\Support\generate_sign;
 use App\Http\Controllers\Api\Controller;
 use App\Models\User;
+use Cache;
 class VenueController extends Controller
 {
     //场馆信息
