@@ -48,15 +48,26 @@ class MemberController extends Controller
             $insurance->save();
         }
         $payment = \EasyWeChat::payment(); // 微信支付
-        $result = $payment->order->unify([
-            'body' =>$data['title'],
-            'out_trade_no' => $order['ordernum'],
-            'trade_type' => 'JSAPI',  // 必须为JSAPI
-            'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
-            'total_fee' => $data['money']*100+$data['receipts']['money']*100, // 总价
-//            'notify_url'=> config('app.url').'member/notify'
-            'notify_url'=>config('app.url').'api/member/notify'
-        ]);
+        if($order['insurance']==1){
+            $result = $payment->order->unify([
+                'body' =>$data['title'],
+                'out_trade_no' => $order['ordernum'],
+                'trade_type' => 'JSAPI',  // 必须为JSAPI
+                'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
+                'total_fee' => ($data['money']+$data['receipts']['money'])*100, // 总价
+                'notify_url'=>config('app.url').'api/member/notify'
+            ]);
+        }else{
+            $result = $payment->order->unify([
+                'body' =>$data['title'],
+                'out_trade_no' => $order['ordernum'],
+                'trade_type' => 'JSAPI',  // 必须为JSAPI
+                'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
+                'total_fee' => $data['money']*100, // 总价
+                'notify_url'=>config('app.url').'api/member/notify'
+            ]);
+        }
+
 
 // 如果成功生成统一下单的订单，那么进行二次签名
         if ($result['return_code'] === 'SUCCESS') {
