@@ -23,7 +23,7 @@ class CommodityController extends AdminController
             $grid->price;
             $grid->memerprice;
             $grid->img->image();
-            $grid->repertory;
+//            $grid->repertory;
             $grid->starttime;
             $grid->endtime;
 //            $grid->status;
