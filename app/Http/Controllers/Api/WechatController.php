@@ -41,7 +41,7 @@ class WechatController extends Controller
             $user->weapp_avatar=$data['userInfo']['avatarUrl'];
             $user->save();
         }
-        return $this->success(['token'=>$user['token']]);
+        return $this->success(['openid'=>$weappOpenid,'token'=>$user['token']]);
     }
 
     //获取用户信息
