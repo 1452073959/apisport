@@ -24,8 +24,8 @@ class CommodityController extends AdminController
             $grid->memerprice;
             $grid->img->image();
             $grid->repertory;
-//            $grid->starttime;
-//            $grid->endtime;
+            $grid->starttime;
+            $grid->endtime;
 //            $grid->status;
             $grid->status->using([0 => '下架', 1 => '上架']);
             $grid->filter(function (Grid\Filter $filter) {

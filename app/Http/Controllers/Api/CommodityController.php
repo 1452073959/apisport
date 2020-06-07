@@ -13,18 +13,22 @@ use Cache;
 use App\Exceptions\InvalidRequestException;
 use function EasyWeChat\Kernel\Support\generate_sign;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 class CommodityController extends Controller
 {
     //
     //商品列表
     public function commoditylist()
     {
-        $commoditylist=Commodity::all();
+        $commoditylist=Commodity::where('status',1)->get();
         foreach ($commoditylist as $k1=>$v1)
         {
-            $commoditylist[$k1]['img'] = config('app.url') . 'uploads/' . $v1['img'];
+            if(!Carbon::now()->between($v1['starttime'], $v1['endtime']))
+            {
+              unset($commoditylist[$k1]);
+            }
         }
+
         return $this->success($commoditylist);
     }
 
@@ -87,6 +91,9 @@ class CommodityController extends Controller
                 $order->paid_at = date('Y-m-d H:i:s',time());; // 更新支付时间为当前时间
                 $order->status = 1;
                 $order->total_fee = $message['total_fee']*0.01;
+                $order->repertory--;
+                $order->sales++;
+
             } else {
                 $order->status = 0;
                 return $fail('通信失败，请稍后再通知我');
