@@ -67,6 +67,10 @@ class WechatController extends Controller
     public function image()
     {
         $data=Swipe::all();
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['img']=json_decode($v['img'],true);
+        }
         return $data;
     }
 
