@@ -4,7 +4,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class SportOrder extends Model
 {
 	
@@ -12,6 +12,14 @@ class SportOrder extends Model
     public $timestamps = false;
 
 
+    public function getStarttimeAttribute($date)
+    {
+        return date('Y-m-d H:i',strtotime($date));
+    }
+    public function getEndtimeAttribute($date)
+    {
+        return date('Y-m-d H:i',strtotime($date));
+    }
 
     //一对多反向
     public function user()

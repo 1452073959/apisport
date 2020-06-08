@@ -64,6 +64,15 @@ class CommodityOrder extends Model
         return false;
     }
 
+    public function getStarttimeAttribute($date)
+    {
+        return date('Y-m-d H:i',strtotime($date));
+    }
+    public function getEndtimeAttribute($date)
+    {
+        return date('Y-m-d H:i',strtotime($date));
+    }
+
     public function getAddressAttribute($extra)
     {
         return json_decode($extra, true);
