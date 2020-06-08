@@ -16,12 +16,10 @@ class VenueController extends Controller
     public function venue()
     {
         $venue=Venue::with('lease')->get();
-
         foreach ($venue as $k1=>$v1)
         {
-            $venue[$k1]['venueimg'] = config('app.url') . 'uploads/' . $v1['venueimg'];
+            $venue[$k1]['venueimg'] =json_decode($v1['venueimg'],true);
         }
-
         return $this->success($venue) ;
     }
 

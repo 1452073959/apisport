@@ -83,7 +83,10 @@ class VenueController extends AdminController
             $form->text('venuename')->required();
             $form->text('address')->required();
             $form->tags('label');
-            $form->image('venueimg');
+//            $form->image('venueimg');
+            $form->multipleImage('venueimg','图片')->uniqueName()->saving(function ($paths) {
+                return json_encode($paths);
+            });
             $form->text('tel');
             $form->timeRange('starttime', 'endtime', '营业时间');
             $form->text('venuesynopsis');
