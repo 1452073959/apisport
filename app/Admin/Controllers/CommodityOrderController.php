@@ -43,6 +43,8 @@ class CommodityOrderController extends AdminController
             $grid->disableDeleteButton();
             $grid->disableEditButton();
             $grid->disableQuickEditButton();
+            //关闭新增按钮
+            $grid->disableCreateButton();
 //            $grid->disableViewButton();
         });
     }
