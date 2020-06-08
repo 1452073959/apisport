@@ -24,3 +24,4 @@ use Dcat\Admin\Show;
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+Form\Field\Map::collectAssets();

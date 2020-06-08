@@ -83,6 +83,7 @@ class VenueController extends AdminController
             $form->text('venuename')->required();
             $form->text('address')->required();
             $form->tags('label');
+            $form->map('latitude', 'longitude', '位置');
 //            $form->image('venueimg');
             $form->multipleImage('venueimg','图片')->uniqueName()->saving(function ($paths) {
                 return json_encode($paths);
