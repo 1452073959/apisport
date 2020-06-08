@@ -77,8 +77,8 @@ class WechatController extends Controller
         {
             $data3[]=config('app.url') . 'uploads/' .$v;
         }
-              
-        return $data3;
+
+        return $this->success($data3);
     }
 
 
