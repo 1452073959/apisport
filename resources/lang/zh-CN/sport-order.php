@@ -15,7 +15,8 @@ return [
         'payment_no' => '//微信订单号',
         'status' => '订单状态',
         'invoice' => '发票',
-        'type'=>'类型'
+        'type'=>'类型',
+        'quantum'=>'时间段',
     ],
     'options' => [
     ],

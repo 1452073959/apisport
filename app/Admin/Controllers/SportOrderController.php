@@ -27,8 +27,9 @@ class SportOrderController extends AdminController
             $grid->no;
             $grid->column('venue.venuename','场馆');
             $grid->column('user.nickname','会员昵称');
-            $grid->starttime;
-            $grid->endtime;
+//            $grid->starttime;
+//            $grid->endtime;
+            $grid->quantum;
             $grid->money;
             $grid->paid_at;
 
