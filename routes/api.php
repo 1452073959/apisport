@@ -48,7 +48,8 @@ $api->version('v1', [
     $api->post('adjorder', 'OrderController@adjorder');
     //订单查询
     $api->get('orderlist', 'OrderController@orderlist');
-
+    //swipe
+    $api->get('image', 'WechatController@image');
 
     //微信登陆
     $api->any('logincode', 'WechatController@wechat');

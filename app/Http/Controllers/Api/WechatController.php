@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\SMemberOrder;
+use App\Models\Swipe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use EasyWeChat\Factory;
@@ -61,6 +62,12 @@ class WechatController extends Controller
         }else{
             return $this->failed('请登陆');
         }
+    }
+    //
+    public function image()
+    {
+        $data=Swipe::all();
+        return $data;
     }
 
 

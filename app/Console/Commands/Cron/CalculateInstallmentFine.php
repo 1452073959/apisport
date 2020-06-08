@@ -52,7 +52,6 @@ class CalculateInstallmentFine extends Command
                 $user[$k]['codenot']=0;
                 $v->save();
             }
-
         }
     }
 

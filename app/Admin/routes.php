@@ -33,5 +33,7 @@ Route::group([
     $router->resource('CommodityOrder', 'CommodityOrderController');
     //订单详情
     $router->get('orders/{order}', 'OrdersController@show')->name('admin.orders.show');
+    //swope
+    $router->resource('swipe', 'SwipeController');
 
 });
