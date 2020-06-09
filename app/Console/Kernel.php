@@ -40,6 +40,7 @@ class Kernel extends ConsoleKernel
                 if(strtotime(Carbon::now())>strtotime($v['end_time'])){
                     $user[$k]['membership']=0;
                     $user[$k]['codenot']=0;
+                    $user[$k]['code']=null;
                     $v->save();
                 }else{
                     $user[$k]['code']=$this->GetRandStr(3);
