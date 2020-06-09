@@ -65,6 +65,7 @@ class SMemberController extends AdminController
             $form->text('cardname');
             $form->number('deadline');
             $form->text('price');
+            $form->text('insurance');
 //            $form->text('explain');
             $form->textarea('explain')->rows(10);
             $form->display('created_at');

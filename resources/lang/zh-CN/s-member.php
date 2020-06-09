@@ -8,6 +8,7 @@ return [
         'deadline' => '时效(单位:月)',
         'price' => '价格',
         'explain' => '说明',
+        'insurance'=>'保险金额'
     ],
     'options' => [
     ],
