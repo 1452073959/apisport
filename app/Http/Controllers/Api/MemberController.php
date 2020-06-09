@@ -148,8 +148,12 @@ class MemberController extends Controller
     public function record(Request $request)
     {
         $data=$request->all();
+        $where=[];
+        if ($request->input('status')) {
+            $where[] = ['status', $request->input('status')];
+        }
         $user=User::with('member')->where('token',$data['token'])->first();
-        $record=SMemberOrder::with('member','user')->where('user_id',$user['id'])->get();
+        $record=SMemberOrder::with('member','user')->where('user_id',$user['id'])->where($where)->get();
         return $this->success($record);
     }
 
