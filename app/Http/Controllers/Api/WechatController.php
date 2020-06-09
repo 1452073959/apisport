@@ -10,6 +10,7 @@ use EasyWeChat\Factory;
 use function EasyWeChat\Kernel\Support\generate_sign;
 use Cache;
 use App\Models\User;
+use App\Models\UserMember;
 class WechatController extends Controller
 {
     //
@@ -35,6 +36,11 @@ class WechatController extends Controller
             $user->nickname = $data['userInfo']['nickName'];
             $user->weapp_avatar = $data['userInfo']['avatarUrl'];
             $user->save();
+
+            $usermemer=new UserMember();
+            $usermemer->user_id=$user['id'];
+            $usermemer->end_time = date('Y-m-d H:i:s',time());
+            $usermemer->save();
         }else{
             $user->weapp_openid=$weappOpenid;
             $user->token=$weixinSessionKey;
