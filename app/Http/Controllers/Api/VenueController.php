@@ -42,7 +42,9 @@ class VenueController extends Controller
         $order->uid=$user['id'];
         $order->starttime=$data['starttime'];
         $order->endtime=$data['endtime'];
-        $order->quantum=$data['quantum'];
+        if(isset($data['quantum'])){
+            $order->quantum=$data['quantum'];
+        }
         $order->money=$data['money'];
         $order->type=$data['type'];
         if(isset($data['invoice'])){
