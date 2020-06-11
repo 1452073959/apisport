@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\Controller;
 use App\Models\User;
 use Cache;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 class VenueController extends Controller
 {
     //场馆信息
@@ -139,10 +141,16 @@ class VenueController extends Controller
         $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->get();
         return $this->success($record);
     }
-
-    public function yuyue(Request $request)
+    //查询日期
+    public function bought(Request $request)
     {
-
+        if ($request->input('date')) {
+            $bought =DB::table('sport_order')->whereDate('paid_at', $request->input('date'))->get();
+        }else{
+            $bought =DB::table('sport_order')->get();
+        }
+        return $this->success($bought);
     }
+
 
 }

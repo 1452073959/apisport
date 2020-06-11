@@ -34,6 +34,8 @@ $api->version('v1', [
     $api->get('venuerecord', 'VenueController@venuerecord');
     //约球核销
     $api->any('/sport', 'VenueController@sport');
+    //已付款的订单
+    $api->get('bought', 'VenueController@bought');
     //商品列表
     $api->get('commodity', 'CommodityController@commoditylist');
     //商品下单
