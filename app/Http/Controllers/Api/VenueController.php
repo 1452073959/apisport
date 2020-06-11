@@ -147,7 +147,7 @@ class VenueController extends Controller
         if ($request->input('date')) {
             $bought =DB::table('sport_order')->whereDate('paid_at', $request->input('date'))->get();
         }else{
-            $bought =DB::table('sport_order')->get();
+            $bought =DB::table('sport_order')->where('status',1)->get();
         }
         return $this->success($bought);
     }
