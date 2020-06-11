@@ -62,12 +62,12 @@ class SMemberController extends AdminController
     {
         return Form::make(new SMember(), function (Form $form) {
             $form->display('id');
-            $form->text('cardname');
-            $form->number('deadline');
-            $form->text('price');
-            $form->text('insurance');
+            $form->text('cardname')->required();;
+            $form->number('deadline')->required();;
+            $form->text('price')->required();;
+            $form->text('insurance')->required();;
 //            $form->text('explain');
-            $form->textarea('explain')->rows(10);
+            $form->textarea('explain')->rows(10)->required();;
             $form->display('created_at');
             $form->display('updated_at');
         });

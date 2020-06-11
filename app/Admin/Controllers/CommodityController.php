@@ -69,17 +69,17 @@ class CommodityController extends AdminController
     {
         return Form::make(new Commodity(), function (Form $form) {
             $form->display('id');
-            $form->text('title');
-            $form->number('price');
-            $form->number('memerprice');
+            $form->text('title')->required();;
+            $form->number('price')->required();;
+            $form->number('memerprice')->required();;
             $form->image('img')->uniqueName()->required();
-            $form->editor('description','商品描述');
+            $form->editor('description','商品描述')->required();;
             $form->text('repertory');
 //            $form->text('starttime');
 //            $form->text('endtime');
-            $form->datetimeRange('starttime', 'endtime', '销售时间');
+            $form->datetimeRange('starttime', 'endtime', '销售时间')->required();;
 //            $form->text('status');
-            $form->radio('status','商品状态')->options([0 => '下架', 1=> '上架'])->default(0);
+            $form->radio('status','商品状态')->options([0 => '下架', 1=> '上架'])->default(0)->required();;
         });
     }
 }

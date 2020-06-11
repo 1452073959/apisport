@@ -16,7 +16,8 @@ return [
         'status' => '订单状态',
         'invoice' => '发票',
         'type'=>'类型',
-        'quantum'=>'时间段',
+        'quantumdate'=>'订单日期',
+        'quantumtime'=>'订单时间',
     ],
     'options' => [
     ],

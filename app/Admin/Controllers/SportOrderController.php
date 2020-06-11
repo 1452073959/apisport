@@ -20,6 +20,7 @@ class SportOrderController extends AdminController
     {
         return Grid::make(new SportOrder(), function (Grid $grid) {
 //            $grid->id->sortable();
+
             $grid->model()->where('status', '>', 0)->orderBy('paid_at', 'desc');
             $grid->model()->with(['venue']);
             $grid->model()->with(['user']);
@@ -29,7 +30,8 @@ class SportOrderController extends AdminController
             $grid->column('user.nickname','会员昵称');
 //            $grid->starttime;
 //            $grid->endtime;
-            $grid->quantum;
+            $grid->quantumdate;
+            $grid->quantumtime;
             $grid->money;
             $grid->paid_at;
 
@@ -44,6 +46,14 @@ class SportOrderController extends AdminController
             //关闭新增按钮
             $grid->disableCreateButton();
             //关闭操作
+            $grid->quickSearch('no');
+            $grid->filter(function($filter){
+                // 在这里添加字段过滤器
+                $filter->equal('no', '订单号');
+            });
+            // 显示
+//            $grid->showFilter();
+
             $grid->disableActions();
         });
     }

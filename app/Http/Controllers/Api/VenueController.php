@@ -50,7 +50,7 @@ class VenueController extends Controller
             $order->endtime=$data['endtime'];
         }
         if(isset($data['quantumdate'])){
-        $order->quantumdate=$data['quantumdate'];
+            $order->quantumdate=$data['quantumdate'];
          }
         if(isset($data['quantumtime'])){
             $order->quantumtime=$data['quantumtime'];

@@ -82,17 +82,17 @@ class VenueController extends AdminController
             $form->display('id');
             $form->text('venuename')->required();
             $form->text('address')->required();
-            $form->tags('label');
+            $form->tags('label')->required()->help('输入标签按逗号回车');;
             $form->map('latitude', 'longitude', '位置');
 //            $form->image('venueimg');
             $form->multipleImage('venueimg','图片')->uniqueName()->saving(function ($paths) {
                 return json_encode($paths);
-            });
-            $form->text('tel');
-            $form->timeRange('starttime', 'endtime', '营业时间');
-            $form->text('venuesynopsis');
-            $form->text('venuefacility');
-            $form->text('venueserve');
+            })->required();
+            $form->text('tel')->required();;
+            $form->timeRange('starttime', 'endtime', '营业时间')->required();;
+            $form->text('venuesynopsis')->required();
+            $form->text('venuefacility')->required();
+            $form->text('venueserve')->required();
             $form->hasMany('lease','方式', function (Form\NestedForm $form) {
                 $form->text('name');
                 $form->textarea('description','描述');
@@ -108,37 +108,3 @@ class VenueController extends AdminController
     }
 }
 
-
-/*return Form::make(new Venue(), function (Form $form) {
-    $form->model()->with(['lease']);
-    $form->display('id');
-    $form->text('venuename');
-    $form->text('address');
-//            $form->text('label');
-    $form->tags('label');
-    $form->image('venueimg');
-    $form->text('tel');
-    $form->text('starttime');
-    $form->text('endtime');
-    $form->dateRange('starttime', 'endtime', '营业时间');
-    $form->text('venuesynopsis');
-    $form->text('venuefacility');
-    $form->text('venueserve');
-//            $form->text('extra');
-    $form->table('extra', function (Form\NestedForm $table) {
-        $table->text('key');
-        $table->text('value');
-        $table->text('desc');
-    });
-//            $form->checkbox('lease', '租赁方式')->options(Lease::all()->pluck('title', 'id'));
-//            $form->checkbox('lease', '租赁方1式')
-//                ->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name'])
-//                ->saving(function ($value) {
-//                    dd($value);
-//                    // 转化成json字符串保存到数据库
-//                    return json_encode($value);
-//                });
-    $form->text('lease');
-//            $form->radio('lease','租赁方1式')->options(['m' => 'Female', 'f'=> 'Male'])->default('m');
-    $form->display('created_at');
-    $form->display('updated_at');*/
