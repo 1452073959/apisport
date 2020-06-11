@@ -16,7 +16,9 @@ class NewUsers extends Line
     {
         parent::init();
 
-        $this->title('New Users');
+        $this->title('新用户');
+        // 启用图表
+        $this->useChart();
         $this->dropdown([
             '7' => 'Last 7 Days',
             '28' => 'Last 28 Days',

@@ -17,7 +17,7 @@ class HomeController extends Controller
             ->header('首页')
             ->description('')
             ->body(function (Row $row) {
-                $row->column(6, function (Column $column) {
+                $row->column(12, function (Column $column) {
                     $column->row(function (Row $row) {
                         $row->column(6, new Xmember());
                         $row->column(6, new Examples\page\Sport());
@@ -26,6 +26,5 @@ class HomeController extends Controller
 
             });
 
-//        return $content->body(new Xmember());
     }
 }
