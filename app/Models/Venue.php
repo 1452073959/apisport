@@ -15,12 +15,12 @@ class Venue extends Model
     {
         return $this->hasMany(Lease::class,'venue_id','id');
     }
-//第一个参数是关联模型的类名，第二个参数 $table 是建立多对多关联的中间表名
-//第三个参数是 $foreignPivotKey 指的是中间表中当前模型类的外键
-//第四个参数 $relatedPivotKey 是中间表中当前关联模型类的外键
-//第五个参数 $parentKey 表示对应当前模型的哪个字段（
-//第六个参数 $parentKey 表示对应当前模型的哪个字段（
-//最后一个参数 $relation 表示关联关系名称，
+    //整租
+    public function tenancy()
+    {
+        return $this->hasOne(LeaseTenancy::class,'venue_id','id');
+    }
+
 //    public function lease()
 //    {
 //        return $this->belongsToMany(Lease::class,'Svenue_Rlease','s_venue_id','r_lease_id','id','id');

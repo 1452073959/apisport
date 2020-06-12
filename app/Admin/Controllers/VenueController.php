@@ -78,7 +78,9 @@ class VenueController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Venue('lease'), function (Form $form) {
+        return Form::make(new Venue(['lease','tenancy']), function (Form $form) {
+//            $form->model()->with(['tenancy']);
+
             $form->display('id');
             $form->text('venuename')->required();
             $form->text('address')->required();
@@ -93,7 +95,8 @@ class VenueController extends AdminController
             $form->text('venuesynopsis')->required();
             $form->text('venuefacility')->required();
             $form->text('venueserve')->required();
-            $form->hasMany('lease','方式', function (Form\NestedForm $form) {
+            $form->text('tenancy.price','整租每小时价格');
+            $form->hasMany('lease','散租方式', function (Form\NestedForm $form) {
                 $form->text('name');
                 $form->textarea('description','描述');
                 $form->number('price','价格(元)');

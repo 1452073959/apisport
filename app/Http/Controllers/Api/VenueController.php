@@ -17,7 +17,7 @@ class VenueController extends Controller
     //场馆信息
     public function venue()
     {
-        $venue=Venue::with('lease')->get();
+        $venue=Venue::with(['lease','tenancy'])->get();
         foreach ($venue as $k1=>$v1)
         {
             $venue[$k1]['venueimg'] =json_decode($v1['venueimg'],true);
