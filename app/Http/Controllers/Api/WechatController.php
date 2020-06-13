@@ -98,14 +98,21 @@ class WechatController extends Controller
         dump($value1);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function no(Request $request){
         $data=$request->all();
         $user=User::with('member')->where('token',$data['token'])->first();
+
         if ($request->input('no')) {
             $where[] = ['no', $request->input('no')];
         }
-        $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->first();
-        return $this->success($record);
+        $payment = \EasyWeChat::payment(); // 微信支付
+       $weixin= $payment->order->queryByOutTradeNumber("$request->input('no')");
+        $record=SportOrder::with('venue','user')->where($where)->first();
+        return $this->success([$weixin,$record]);
     }
 
     public function xiadan(Request $request)
