@@ -22,7 +22,7 @@ class UserController extends AdminController
             $grid->id->sortable();
             $grid->nickname;
 //            $grid->avatarurl->image()->setAttributes(['width' => '4px']);;
-            $grid->weapp_openid;
+//            $grid->weapp_openid;
             $grid->column('member.membership','会员卡')->using([0 => '未激活', 1 => '会员']);
             $grid->column('member.end_time','会员到期时间');
             $grid->created_at;

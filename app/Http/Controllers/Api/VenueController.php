@@ -127,8 +127,8 @@ class VenueController extends Controller
         if(!$order){
             return $this->success('该订单不存在');
         }else{
-            if($order['codenot']==2){
-                return $this->success('该会员码今日已使用');
+            if($order['status']==2){
+                return $this->success('该订单已使用过');
             }
             $order->codenot=2;
             $order->save();

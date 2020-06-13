@@ -96,4 +96,8 @@ class WechatController extends Controller
         dump($value);
         dump($value1);
     }
+
+    public function no(){
+
+    }
 }
