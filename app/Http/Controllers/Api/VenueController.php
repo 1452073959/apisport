@@ -147,7 +147,9 @@ class VenueController extends Controller
         if ($request->input('status')) {
             $where[] = ['status', $request->input('status')];
         }
-
+        if ($request->input('type')) {
+            $where[] = ['type', $request->input('type')];
+        }
         $user=User::with('member')->where('token',$data['token'])->first();
         $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->get();
         return $this->success($record);
