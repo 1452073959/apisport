@@ -20,6 +20,7 @@ class CommodityController extends Controller
     //商品列表
     public function commoditylist()
     {
+        Cache::put('key1', 99999);
         $commoditylist=Commodity::where('status',1)->get();
         foreach ($commoditylist as $k1=>$v1)
         {
@@ -81,7 +82,7 @@ class CommodityController extends Controller
         $app = \EasyWeChat::payment(); // 微信支付
         $response = $app->handlePaidNotify(function($message, $fail){
             // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
-            Cache::put('key',$message );
+            Cache::put('key',$message);
             $order = CommodityOrder::where('no',$message['out_trade_no'])->first();
             if (!$order || $order['paid_at']) { // 如果订单不存在 或者 订单已经支付过了
                 return ; // 告诉微信，我已经处理完了，订单没找到，别再通知我了
