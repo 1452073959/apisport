@@ -95,7 +95,7 @@ class VenueController extends AdminController
             $form->text('venuesynopsis')->required();
             $form->text('venuefacility')->required();
             $form->text('venueserve')->required();
-            $form->text('tenancy.price','整租每小时价格');
+            $form->text('tenancy.price','整租每小时价格')->help('留空为不整租');
             $form->hasMany('lease','散租方式', function (Form\NestedForm $form) {
                 $form->text('name');
                 $form->textarea('description','描述');

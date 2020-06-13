@@ -143,7 +143,7 @@ class WechatController extends Controller
         $payment = \EasyWeChat::payment(); // 微信支付
         $result = $payment->order->unify([
             'body' =>$data['title'],
-            'out_trade_no' => $data['no'],
+            'out_trade_no' => $data['no'].mt_rand(1,100),
             'trade_type' => 'JSAPI',  // 必须为JSAPI
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
             'total_fee' => $data['money']*100, // 总价
