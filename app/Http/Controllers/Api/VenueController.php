@@ -29,6 +29,7 @@ class VenueController extends Controller
     public function venuexiadan(Request $request)
     {
         $data = $request->all();
+//        dd($data);
         $yy= SportOrder::where('type',1)->where('status',1)->get();
         foreach ($yy as $key=>$val)
         {
@@ -52,7 +53,8 @@ class VenueController extends Controller
             $order->quantumdate=$data['quantumdate'];
          }
         if(isset($data['quantumtime'])){
-            $order->quantumtime=$data['quantumtime'];
+            $str=  json_encode(array_values($data['quantumtime']));
+            $order->quantumtime=$str;
         }
         $order->money=$data['money'];
         $order->type=$data['type'];
