@@ -163,13 +163,13 @@ class WechatController extends Controller
 //            'notify_url'=> config('app.url').'member/notify'
             'notify_url'=>$notify
         ]);
+
         // 如果成功生成统一下单的订单，那么进行二次签名
         if ($result['return_code'] === 'SUCCESS') {
             // 二次签名的参数必须与下面相同
             $params = [
                 'appId' => 'wxe14c531956fe8477',
                 'timeStamp' => (string)time(),
-                'out_trade_no' => $newno,
                 'nonceStr' => $result['nonce_str'],
                 'package' => 'prepay_id=' . $result['prepay_id'],
                 'signType' => 'MD5',
