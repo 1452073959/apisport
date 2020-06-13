@@ -77,7 +77,7 @@ class CommodityController extends Controller
     //通知
     public function tongzhi()
     {
-        Cache::put('key1', 123456798);
+        Cache::put('key1', 128);
         $app = \EasyWeChat::payment(); // 微信支付
         $response = $app->handlePaidNotify(function($message, $fail){
             // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
