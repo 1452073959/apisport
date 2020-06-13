@@ -136,12 +136,18 @@ class WechatController extends Controller
         return $this->success($record);
     }
 
+    //随机数
+    function get_random2($length = 4) {
+        $min = pow(10 , ($length - 1));
+        $max = pow(10, $length) - 1;
+        return rand($min, $max);
+    }
     public function xiadan(Request $request)
     {
         $data=$request->all();
         $user=User::with('member')->where('token',$data['token'])->first();
-//        $newno=$data['no'].mt_rand(1,100);
-        $newno= substr_replace($data['no'],mt_rand(1,100),'1','3');
+        $newno=(string)$this->get_random2(3);
+        $newno= substr_replace($data['no'],$newno,'4','3');
         if($request->input('type')==0){
             SportOrder::where('no',$data['no'])->update(['no'=>$newno]);
             $notify=config('app.url').'api/venue/notify';
