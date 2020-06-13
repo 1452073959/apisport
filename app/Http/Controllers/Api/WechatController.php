@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\CommodityOrder;
 use App\Models\SMemberOrder;
 use App\Models\SportOrder;
 use App\Models\Swipe;
@@ -12,6 +13,8 @@ use function EasyWeChat\Kernel\Support\generate_sign;
 use Cache;
 use App\Models\User;
 use App\Models\UserMember;
+use function PHPSTORM_META\type;
+
 class WechatController extends Controller
 {
     //
@@ -113,6 +116,24 @@ class WechatController extends Controller
        $weixin= $payment->order->queryByOutTradeNumber($request->input('no'));
         $record=SportOrder::with('venue','user')->where($where)->first();
         return $this->success([$weixin,$record]);
+    }
+
+    public function del(Request $request){
+        $data=$request->all();
+        $user=User::with('member')->where('token',$data['token'])->first();
+        if ($request->input('no')) {
+            $where[] = ['no', $request->input('no')];
+        }
+        if($request->input('type')==0){
+            $record=SportOrder::where($where)->delete();
+        }
+        if($request->input('type')==1){
+            $record=CommodityOrder::where($where)->delete();
+        }
+        if($request->input('type')==2){
+            $record=SMemberOrder::where($where)->delete();
+        }
+        return $this->success($record);
     }
 
     public function xiadan(Request $request)

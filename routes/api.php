@@ -57,6 +57,8 @@ $api->version('v1', [
     $api->any('logincode', 'WechatController@wechat');
     //订单号查询
     $api->any('no', 'WechatController@no');
+//    删除
+    $api->any('del', 'WechatController@del');
     //下单
     $api->any('xiadan', 'WechatController@xiadan');
 
