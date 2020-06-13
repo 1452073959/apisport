@@ -43,12 +43,7 @@ class VenueController extends Controller
         $order=new SportOrder();
         $order->vid=$data['vid'];
         $order->uid=$user['id'];
-        if(isset($data['starttime'])){
-            $order->starttime=$data['starttime'];
-        }
-        if(isset($data['endtime'])){
-            $order->endtime=$data['endtime'];
-        }
+
         if(isset($data['quantumdate'])){
             $order->quantumdate=$data['quantumdate'];
          }
