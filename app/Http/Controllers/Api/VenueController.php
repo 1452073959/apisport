@@ -76,12 +76,12 @@ class VenueController extends Controller
             $params = [
                 'appId' => 'wxe14c531956fe8477',
                 'timeStamp' => (string)time(),
-                'out_trade_no' => $order['no'],
                 'nonceStr' => $result['nonce_str'],
                 'package' => 'prepay_id=' . $result['prepay_id'],
                 'signType' => 'MD5',
             ];
             $params['paySign'] = generate_sign($params, config('wechat.payment.default.key'));
+            $params['out_trade_no'] = $order['no'];
             return $params;
         } else {
             return $result;
