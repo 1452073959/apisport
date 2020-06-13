@@ -110,7 +110,7 @@ class WechatController extends Controller
             $where[] = ['no', $request->input('no')];
         }
         $payment = \EasyWeChat::payment(); // 微信支付
-       $weixin= $payment->order->queryByOutTradeNumber("$request->input('no')");
+       $weixin= $payment->order->queryByOutTradeNumber($request->input('no'));
         $record=SportOrder::with('venue','user')->where($where)->first();
         return $this->success([$weixin,$record]);
     }
