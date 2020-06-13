@@ -20,7 +20,6 @@ class CommodityController extends Controller
     //商品列表
     public function commoditylist()
     {
-        Cache::put('key1', 99999);
         $commoditylist=Commodity::where('status',1)->get();
         foreach ($commoditylist as $k1=>$v1)
         {
@@ -78,7 +77,7 @@ class CommodityController extends Controller
     //通知
     public function tongzhi()
     {
-        Cache::put('key1', 128);
+        Cache::put('key1', date('Y-m-d H:i:s',time()));
         $app = \EasyWeChat::payment(); // 微信支付
         $response = $app->handlePaidNotify(function($message, $fail){
             // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
@@ -89,11 +88,14 @@ class CommodityController extends Controller
             }
             if ($message['return_code'] === 'SUCCESS') { // return_code 表示通信状态，不代表支付状态
                 // 用户是否支付成功
-                $order->paid_at = date('Y-m-d H:i:s',time());; // 更新支付时间为当前时间
+                $order->paid_at = date('Y-m-d H:i:s',time());;// 更新支付时间为当前时间
                 $order->status = 1;
                 $order->total_fee = $message['total_fee']*0.01;
-                $order->repertory--;
-                $order->sales++;
+                //更新销量,修改库存;
+                $commodity=Commodity::find($order['cid']);
+                $commodity->sales++;
+                $commodity->repertory--;
+                $commodity->save();
 
             } else {
                 $order->status = 0;
