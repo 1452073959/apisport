@@ -142,7 +142,7 @@ class CommodityController extends Controller
             $where[] = ['status', $request->input('status')];
         }
         $user=User::with('member')->where('token',$data['token'])->first();
-        $record=CommodityOrder::with('Commodity','user')->where('user_id',$user['id'])->where($where)->get();
+        $record=CommodityOrder::with('Commodity','user')->where('user_id',$user['id'])->where($where) ->orderBy('status', 'desc')->get();
         return $this->success($record);
     }
 
