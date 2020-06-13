@@ -140,16 +140,27 @@ class WechatController extends Controller
     {
         $data=$request->all();
         $user=User::with('member')->where('token',$data['token'])->first();
+        $newno=$data['no'].mt_rand(1,100);
+        if($request->input('type')==0){
+            SportOrder::where('no',$data['no'])->update(['no'=>$newno]);
+        }
+        if($request->input('type')==1){
+            $record=CommodityOrder::where('no',$data['no'])->update(['no'=>$newno]);
+        }
+        if($request->input('type')==2){
+            $record=SMemberOrder::where('no',$data['no'])->update(['no'=>$newno]);
+        }
         $payment = \EasyWeChat::payment(); // 微信支付
         $result = $payment->order->unify([
             'body' =>$data['title'],
-            'out_trade_no' => $data['no'].mt_rand(1,100),
+            'out_trade_no' => $newno,
             'trade_type' => 'JSAPI',  // 必须为JSAPI
             'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
             'total_fee' => $data['money']*100, // 总价
 //            'notify_url'=> config('app.url').'member/notify'
             'notify_url'=>config('app.url').'api/venue/notify'
         ]);
+        dd($result);
         // 如果成功生成统一下单的订单，那么进行二次签名
         if ($result['return_code'] === 'SUCCESS') {
             // 二次签名的参数必须与下面相同
@@ -166,4 +177,6 @@ class WechatController extends Controller
             return $result;
         }
     }
+
+
 }
