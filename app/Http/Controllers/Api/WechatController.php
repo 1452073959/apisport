@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\SMemberOrder;
+use App\Models\SportOrder;
 use App\Models\Swipe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
@@ -97,7 +98,44 @@ class WechatController extends Controller
         dump($value1);
     }
 
-    public function no(){
+    public function no(Request $request){
+        $data=$request->all();
+        $user=User::with('member')->where('token',$data['token'])->first();
+        if ($request->input('no')) {
+            $where[] = ['no', $request->input('no')];
+        }
+        $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->first();
+        return $this->success($record);
+    }
 
+    public function xiadan(Request $request)
+    {
+        $data=$request->all();
+        $user=User::with('member')->where('token',$data['token'])->first();
+        $payment = \EasyWeChat::payment(); // 微信支付
+        $result = $payment->order->unify([
+            'body' =>$data['title'],
+            'out_trade_no' => $data['no'],
+            'trade_type' => 'JSAPI',  // 必须为JSAPI
+            'openid' => $user['weapp_openid'], // 这里的openid为付款人的openid
+            'total_fee' => $data['money']*100, // 总价
+//            'notify_url'=> config('app.url').'member/notify'
+            'notify_url'=>config('app.url').'api/venue/notify'
+        ]);
+        // 如果成功生成统一下单的订单，那么进行二次签名
+        if ($result['return_code'] === 'SUCCESS') {
+            // 二次签名的参数必须与下面相同
+            $params = [
+                'appId' => 'wxe14c531956fe8477',
+                'timeStamp' => (string)time(),
+                'nonceStr' => $result['nonce_str'],
+                'package' => 'prepay_id=' . $result['prepay_id'],
+                'signType' => 'MD5',
+            ];
+            $params['paySign'] = generate_sign($params, config('wechat.payment.default.key'));
+            return $params;
+        } else {
+            return $result;
+        }
     }
 }

@@ -55,8 +55,10 @@ $api->version('v1', [
 
     //微信登陆
     $api->any('logincode', 'WechatController@wechat');
-
-    $api->any('order', 'WechatController@order');
+    //订单号查询
+    $api->any('no', 'WechatController@no');
+    //下单
+    $api->any('xiadan', 'WechatController@xiadan');
 
     $api->any('cache', 'WechatController@cache');
 });
