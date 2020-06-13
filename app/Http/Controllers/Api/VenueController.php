@@ -77,6 +77,7 @@ class VenueController extends Controller
             $params = [
                 'appId' => 'wxe14c531956fe8477',
                 'timeStamp' => (string)time(),
+                'out_trade_no' => $order['no'],
                 'nonceStr' => $result['nonce_str'],
                 'package' => 'prepay_id=' . $result['prepay_id'],
                 'signType' => 'MD5',
@@ -141,10 +142,12 @@ class VenueController extends Controller
     public function venuerecord(Request $request)
     {
         $data=$request->all();
+
         $where=[];
         if ($request->input('status')) {
             $where[] = ['status', $request->input('status')];
         }
+
         $user=User::with('member')->where('token',$data['token'])->first();
         $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->get();
         return $this->success($record);
