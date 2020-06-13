@@ -30,14 +30,6 @@ class VenueController extends Controller
     {
         $data = $request->all();
 //        dd($data);
-        $yy= SportOrder::where('type',1)->where('status',1)->get();
-        foreach ($yy as $key=>$val)
-        {
-            if(Carbon::createFromFormat("Y-m-d H:i:s",$data['starttime'])->between($val['starttime'], $val['endtime']))
-            {
-                return $this->failed('当前时间段已有预约');
-            }
-        }
         //获取用户信息
         $user=User::with('member')->where('token',$data['token'])->first();
         $order=new SportOrder();
