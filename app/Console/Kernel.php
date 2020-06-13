@@ -33,6 +33,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         // daily() 代表每天凌晨 00:00 执行
 //        $schedule->command('CalculateInstallmentFine')->daily();
+//        ->everyMinute();    每分钟运行一次任务
+//->everyFiveMinutes();   每五分钟运行一次任务
         $schedule->call(function () {
             $user=UserMember::all();
             foreach ($user as $k=>$v)
@@ -50,7 +52,7 @@ class Kernel extends ConsoleKernel
                     $v->save();
                 }
             }
-        })->daily();
+        })->everyMinute();
 
 
     }
