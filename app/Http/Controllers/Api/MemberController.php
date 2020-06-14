@@ -14,6 +14,7 @@ use Response;
 use function EasyWeChat\Kernel\Support\generate_sign;
 use Cache;
 use Carbon\Carbon;
+
 class MemberController extends Controller
 {
     //
@@ -109,7 +110,7 @@ class MemberController extends Controller
                 $order->total_fee = $message['total_fee']*0.01;
                 $usermember=UserMember::where('user_id',$order['user_id'])->first();
                 $newtime=date("Y-m-d h:i:s",strtotime('+'.$order['member']['deadline'].'months',strtotime( $usermember['end_time'])));
-                DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime]);
+                DB::table('user_member')->where('user_id',$order['user_id'])->update(['end_time' => $newtime,'code'=>$this->GetRandStr(6)]);
                 DB::table('memberinsurance')->where('oid',$order['id'])->update(['status' => 1]);
             } else {
                 $order->status = 0;
@@ -121,7 +122,16 @@ class MemberController extends Controller
         return $response;
     }
 
-
+    function GetRandStr($length){
+        $str='abcdefghijklmnopqrstuvwxyz0123456789';
+        $len=strlen($str)-1;
+        $randstr='';
+        for($i=0;$i<$length;$i++){
+            $num=mt_rand(0,$len);
+            $randstr .= $str[$num];
+        }
+        return $randstr;
+    }
 
 
 //    用户会员码核销
