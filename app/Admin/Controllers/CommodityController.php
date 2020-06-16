@@ -75,6 +75,7 @@ class CommodityController extends AdminController
             $form->image('img')->uniqueName()->required();
             $form->editor('description','商品描述')->required();;
             $form->text('repertory');
+            $form->disableResetButton();
 //            $form->text('starttime');
 //            $form->text('endtime');
             $form->datetimeRange('starttime', 'endtime', '销售时间')->required();;

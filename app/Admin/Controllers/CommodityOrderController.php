@@ -78,6 +78,7 @@ class CommodityOrderController extends AdminController
             $form->text('invoice');
             $form->text('ship_status');
             $form->text('ship_data');
+            $form->disableResetButton();
         });
     }
 }

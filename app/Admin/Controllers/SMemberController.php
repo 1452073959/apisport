@@ -70,6 +70,7 @@ class SMemberController extends AdminController
             $form->textarea('explain')->rows(10)->required();;
             $form->display('created_at');
             $form->display('updated_at');
+            $form->disableResetButton();
         });
     }
 }

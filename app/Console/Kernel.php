@@ -52,7 +52,7 @@ class Kernel extends ConsoleKernel
                     $v->save();
                 }
             }
-        })->everyMinute();
+        })->daily();
 
 
     }

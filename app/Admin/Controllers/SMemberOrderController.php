@@ -84,6 +84,7 @@ class SMemberOrderController extends AdminController
             $form->text('open_money');
             $form->text('open_time');
             $form->text('end_time');
+            $form->disableResetButton();
         });
     }
 }

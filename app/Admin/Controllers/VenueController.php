@@ -99,10 +99,10 @@ class VenueController extends AdminController
             $form->hasMany('lease','散租方式', function (Form\NestedForm $form) {
                 $form->text('name');
                 $form->textarea('description','描述');
-                $form->number('price','价格(元)');
+                $form->text('price','价格(元)');
             });
 
-
+            $form->disableResetButton();
             $form->display('created_at');
             $form->display('updated_at');
 

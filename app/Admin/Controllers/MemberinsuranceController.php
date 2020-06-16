@@ -74,6 +74,7 @@ class MemberinsuranceController extends AdminController
             $form->text('card');
             $form->text('startdate');
             $form->text('enddate');
+            $form->disableResetButton();
         });
     }
 }

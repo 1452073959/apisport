@@ -104,6 +104,7 @@ class SportOrderController extends AdminController
             $form->text('payment_no');
             $form->text('status');
             $form->text('invoice');
+            $form->disableResetButton();
         });
     }
 

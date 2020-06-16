@@ -69,6 +69,7 @@ class SwipeController extends AdminController
                 // 也可以转化为json
                 return json_encode($paths);
             });
+            $form->disableResetButton();
         });
     }
 }
