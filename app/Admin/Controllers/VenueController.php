@@ -100,6 +100,7 @@ class VenueController extends AdminController
                 $form->text('name');
                 $form->textarea('description','描述');
                 $form->text('price','价格(元)');
+                $form->text('insured','保险金额(元)');
             });
 
             $form->disableResetButton();
