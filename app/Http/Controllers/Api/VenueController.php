@@ -131,12 +131,8 @@ class VenueController extends Controller
     {
         $data=$request->all();
         $user=User::with('member')->where('token',$data['token'])->first();
-        if ($request->input('status')) {
 
-            $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where('status',$request->input('status'))->get();
-        }else{
-            $record=SportOrder::with('venue','user')->where('uid',$user['id'])->get();
-        }
+     $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where('status',$request->input('status'))->get();
 
         return $this->success($record);
     }
