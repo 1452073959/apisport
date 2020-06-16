@@ -130,16 +130,14 @@ class VenueController extends Controller
     public function venuerecord(Request $request)
     {
         $data=$request->all();
-
-        $where=[];
-        if ($request->input('status')) {
-            $where[] = ['status', $request->input('status')];
-        }
-        if ($request->input('type')) {
-            $where[] = ['type', $request->input('type')];
-        }
         $user=User::with('member')->where('token',$data['token'])->first();
-        $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where($where)->get();
+        if ($request->input('status')) {
+
+            $record=SportOrder::with('venue','user')->where('uid',$user['id'])->where('status',$request->input('status'))->get();
+        }else{
+            $record=SportOrder::with('venue','user')->where('uid',$user['id'])->get();
+        }
+
         return $this->success($record);
     }
     //查询日期
