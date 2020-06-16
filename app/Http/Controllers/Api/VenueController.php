@@ -11,7 +11,7 @@ use App\Models\User;
 use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Memberinsurance;
 class VenueController extends Controller
 {
     //场馆信息
@@ -48,7 +48,21 @@ class VenueController extends Controller
         if(isset($data['invoice'])){
             $order->invoice=$data['invoice'];
         }
+        if(isset($data['insurance'])){
+            $order->insurance=$data['insurance'];
+        }
         $order->save();
+
+        if($order['insurance']==1){
+            $insurance=new Memberinsurance();
+            $insurance->oid=$order['id'];
+            $insurance->money=$data['receipts']['money'];
+            $insurance->name=$data['receipts']['name'];
+            $insurance->card=$data['receipts']['card'];
+            $insurance->startdate=$data['receipts']['startdate'];
+            $insurance->enddate=$data['receipts']['enddate'];
+            $insurance->save();
+        }
         $payment = \EasyWeChat::payment(); // 微信支付
         $result = $payment->order->unify([
             'body' =>$data['title'],
@@ -96,6 +110,7 @@ class VenueController extends Controller
                 $order->status = 1;
                 $order->total_fee = $message['total_fee']*0.01;
                 $order->payment_no = $message['transaction_id'];
+                DB::table('memberinsurance')->where('oid',$order['id'])->update(['status' => 1]);
             } else {
                 $order->status = 0;
                 return $fail('通信失败，请稍后再通知我');
