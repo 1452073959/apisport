@@ -71,6 +71,9 @@ class SMemberController extends AdminController
             $form->display('created_at');
             $form->display('updated_at');
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 }

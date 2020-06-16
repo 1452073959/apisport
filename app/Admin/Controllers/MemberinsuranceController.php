@@ -75,6 +75,9 @@ class MemberinsuranceController extends AdminController
             $form->text('startdate');
             $form->text('enddate');
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 }

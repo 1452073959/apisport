@@ -70,6 +70,9 @@ class SwipeController extends AdminController
                 return json_encode($paths);
             });
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 }

@@ -105,6 +105,9 @@ class SportOrderController extends AdminController
             $form->text('status');
             $form->text('invoice');
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 

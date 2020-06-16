@@ -104,6 +104,9 @@ class VenueController extends AdminController
             });
 
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
             $form->display('created_at');
             $form->display('updated_at');
 

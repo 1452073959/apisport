@@ -85,6 +85,9 @@ class SMemberOrderController extends AdminController
             $form->text('open_time');
             $form->text('end_time');
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 }

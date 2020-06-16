@@ -61,6 +61,9 @@ class SRaceController extends AdminController
             $form->datetime('time')->format('YYYY-MM-DD HH:mm');
             $form->radio('status')->options([1 => '赛事开始', 2=> '赛事结束',0=>'未开始'])->default('0');
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 }

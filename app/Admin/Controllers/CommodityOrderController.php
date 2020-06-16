@@ -79,6 +79,9 @@ class CommodityOrderController extends AdminController
             $form->text('ship_status');
             $form->text('ship_data');
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
         });
     }
 }

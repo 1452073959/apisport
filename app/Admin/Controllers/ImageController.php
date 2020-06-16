@@ -86,6 +86,9 @@ class ImageController extends AdminController
                     return \App\Models\Image::find((array) $v)->pluck('path')->toArray();
                 });
             $form->disableResetButton();
+            $form->disableViewCheck();
+            $form->disableEditingCheck();
+            $form->disableCreatingCheck();
             $form->display('created_at');
             $form->display('updated_at');
         });
