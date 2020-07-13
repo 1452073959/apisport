@@ -34,8 +34,8 @@ class SMemberOrderController extends AdminController
             $grid->ordernum;
 
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-
+//                $filter->like('user.nickname', '会员昵称');
+                $filter->like('ordernum', '订单号');
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableDelete();
@@ -78,7 +78,9 @@ class SMemberOrderController extends AdminController
     protected function form()
     {
         return Form::make(new SMemberOrder(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('user_id');
             $form->text('member_id');
             $form->text('open_money');

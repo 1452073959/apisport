@@ -19,7 +19,7 @@ class UserController extends AdminController
     {
         return Grid::make(new User(), function (Grid $grid) {
             $grid->model()->with(['member']);
-            $grid->id->sortable();
+//            $grid->id->sortable();
             $grid->nickname;
 //            $grid->avatarurl->image()->setAttributes(['width' => '4px']);;
 //            $grid->weapp_openid;
@@ -29,7 +29,8 @@ class UserController extends AdminController
 //            $grid->updated_at->sortable();
 
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+//                $filter->equal('id');
+                $filter->like('nickname', '昵称');
         
             });
             //关闭新增按钮
@@ -72,7 +73,9 @@ class UserController extends AdminController
     protected function form()
     {
         return Form::make(new User(), function (Form $form) {
-            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
+//            $form->display('id');
             $form->text('name');
             $form->text('avatarurl');
             $form->text('openid');

@@ -19,6 +19,7 @@ class SwipeController extends AdminController
     {
         return Grid::make(new Swipe(), function (Grid $grid) {
 //            $grid->id->sortable();
+
             $grid->img->display(function ($pictures) {
 
                 return json_decode($pictures, true);
@@ -28,6 +29,8 @@ class SwipeController extends AdminController
                 $filter->equal('id');
         
             });
+            // 禁用
+            $grid->disableRowSelector();
             // 禁用详情按钮
             $grid->disableViewButton();
             //关闭新增按钮
@@ -59,8 +62,10 @@ class SwipeController extends AdminController
     protected function form()
     {
         return Form::make(new Swipe(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
 //            $form->image('img');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             // 限制最大上传数量
             $form->multipleImage('img','图片')->uniqueName()->saving(function ($paths) {
                 // 可以转化为由 , 隔开的字符串格式

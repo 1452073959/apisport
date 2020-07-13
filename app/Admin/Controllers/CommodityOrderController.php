@@ -37,8 +37,9 @@ class CommodityOrderController extends AdminController
 //            $grid->ship_data;
         
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-        
+//                $filter->equal('id');
+                $filter->like('no', '订单号');
+//                $filter->like('Commodity.title', '商品名称');
             });
             $grid->disableDeleteButton();
             $grid->disableEditButton();
@@ -67,7 +68,9 @@ class CommodityOrderController extends AdminController
     protected function form()
     {
         return Form::make(new CommodityOrder(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('no');
             $form->text('ordertitle');
             $form->text('uid');

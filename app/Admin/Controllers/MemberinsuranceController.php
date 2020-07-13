@@ -30,8 +30,8 @@ class MemberinsuranceController extends AdminController
             $grid->enddate;
         
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-        
+//                $filter->equal('id');
+//                $filter->like('sportorder.ordernum', '订单号');
             });
 
             //关闭新增按钮
@@ -68,7 +68,9 @@ class MemberinsuranceController extends AdminController
     protected function form()
     {
         return Form::make(new Memberinsurance(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('oid');
             $form->text('name');
             $form->text('card');

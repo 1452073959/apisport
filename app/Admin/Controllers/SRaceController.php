@@ -13,15 +13,17 @@ class SRaceController extends AdminController
     protected function grid()
     {
         return Grid::make(new SRace(), function (Grid $grid) {
-            $grid->id->sortable();
+//            $grid->id->sortable();
             $grid->projectname;
-            $grid->projectcate;
-            $grid->city;
-            $grid->address;
+            // 禁用过滤器按钮
+            $grid->disableFilterButton();
+//            $grid->projectcate;
+//            $grid->city;
+//            $grid->address;
             $grid->venue;
             $grid->troops;
-            $grid->smallimg->image(env('APP_URL').'/uploads', 100,100);
-            $grid->bigimg->image(env('APP_URL').'/uploads', 100,100);
+//            $grid->smallimg->image(env('APP_URL').'/uploads', 100,100);
+//            $grid->bigimg->image(env('APP_URL').'/uploads', 100,100);
             $grid->time;
             $grid->status()->display(function($text) {
                if($text==1)
@@ -49,7 +51,9 @@ class SRaceController extends AdminController
     protected function form()
     {
         return Form::make(new SRace(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('projectname')->required();
             $form->text('projectcate')->required();
             $form->text('city')->required();

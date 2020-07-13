@@ -40,17 +40,14 @@ class SportOrderController extends AdminController
 //            $grid->invoice;
         
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+                $filter->like('no', '订单号');
         
             });
             //关闭新增按钮
             $grid->disableCreateButton();
             //关闭操作
             $grid->quickSearch('no');
-            $grid->filter(function($filter){
-                // 在这里添加字段过滤器
-                $filter->equal('no', '订单号');
-            });
+
             // 显示
 //            $grid->showFilter();
 
@@ -92,7 +89,9 @@ class SportOrderController extends AdminController
     protected function form()
     {
         return Form::make(new SportOrder(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('no');
             $form->text('ordertitle');
             $form->text('vid');

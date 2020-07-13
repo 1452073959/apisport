@@ -56,7 +56,9 @@ class ImageController extends AdminController
     {
 
         return Form::make(new Image(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->image('path')
                 ->saving(function ($value) use ($form) {
                     if ($form->isEditing() && ! $value) {

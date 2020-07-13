@@ -61,7 +61,9 @@ class SMemberController extends AdminController
     protected function form()
     {
         return Form::make(new SMember(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('cardname')->required();;
             $form->number('deadline')->required();;
             $form->text('price')->required();;

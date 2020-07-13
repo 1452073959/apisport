@@ -68,7 +68,9 @@ class CommodityController extends AdminController
     protected function form()
     {
         return Form::make(new Commodity(), function (Form $form) {
-            $form->display('id');
+//            $form->display('id');
+            // 去除整个工具栏内容
+            $form->disableHeader();
             $form->text('title')->required();;
             $form->number('price')->required();;
             $form->number('memerprice')->required();;
