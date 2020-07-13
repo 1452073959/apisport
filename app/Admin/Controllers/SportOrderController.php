@@ -20,7 +20,6 @@ class SportOrderController extends AdminController
     {
         return Grid::make(new SportOrder(), function (Grid $grid) {
 //            $grid->id->sortable();
-
             $grid->model()->where('status', '>', 0)->orderBy('paid_at', 'desc');
             $grid->model()->with(['venue']);
             $grid->model()->with(['user']);

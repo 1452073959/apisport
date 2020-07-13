@@ -34,7 +34,7 @@ class SMemberOrderController extends AdminController
             $grid->ordernum;
 
             $grid->filter(function (Grid\Filter $filter) {
-//                $filter->like('user.nickname', '会员昵称');
+                $filter->like('user.nickname', '会员昵称');
                 $filter->like('ordernum', '订单号');
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {

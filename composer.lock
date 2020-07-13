@@ -115,16 +115,16 @@
         },
         {
             "name": "dcat/laravel-admin",
-            "version": "1.4.6",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jqhph/dcat-admin.git",
-                "reference": "d558331fd2af77f0236ac3e0a9f25e20cdacbe69"
+                "reference": "f66fda13704bffc34d08c910722b12ef7708c23a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/d558331fd2af77f0236ac3e0a9f25e20cdacbe69",
-                "reference": "d558331fd2af77f0236ac3e0a9f25e20cdacbe69",
+                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/f66fda13704bffc34d08c910722b12ef7708c23a",
+                "reference": "f66fda13704bffc34d08c910722b12ef7708c23a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -183,7 +183,7 @@
                 "laravel",
                 "laravel admin"
             ],
-            "time": "2020-05-27T11:47:10+00:00"
+            "time": "2020-07-13T02:05:49+00:00"
         },
         {
             "name": "dingo/api",

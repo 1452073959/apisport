@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<img src="/vendors/dcat-admin/images/logo.png" width="35"> &nbsp;sports',
+    'logo' => '<img src="/vendors/dcat-admin/images/logo.png" width="35"> sports',
 
     /*
     |--------------------------------------------------------------------------
@@ -35,6 +35,16 @@ return [
     |
     */
     'logo-mini' => '<img src="/vendors/dcat-admin/images/logo.png">',
+
+    /*
+     |--------------------------------------------------------------------------
+     | User default avatar
+     |--------------------------------------------------------------------------
+     |
+     | Set a default avatar for newly created users.
+     |
+     */
+    'default_avatar' => '@admin/images/default-avatar.jpg',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +103,7 @@ return [
     | If your page is going to be accessed via https, set it to `true`.
     |
     */
-    'https' => env('ADMIN_HTTPS', false),
+    'https' => env('ADMIN_HTTPS', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -251,7 +261,6 @@ return [
 
         // Pivot table for table above.
         'operation_log_table'    => 'admin_operation_log',
-        'user_permissions_table' => 'admin_user_permissions',
         'role_users_table'       => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
         'role_menu_table'        => 'admin_role_menu',
@@ -294,7 +303,7 @@ return [
     | Supported: "tencent", "google", "yandex".
     |
     */
-    'map_provider' => 'tencent',
+    'map_provider' => 'google',
 
     /*
     |--------------------------------------------------------------------------
@@ -313,19 +322,11 @@ return [
 
         'sidebar_dark' => false,
 
+        'dark_mode_switch' => false,
+
         // bg-primary, bg-info, bg-warning, bg-success, bg-danger, bg-dark
         'navbar_color' => '',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Login page background image
-    |--------------------------------------------------------------------------
-    |
-    | This value is used to set the background image of login page.
-    |
-    */
-    'login_background_image' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -342,7 +343,7 @@ return [
     |
     | Whether enable default breadcrumb for every page content.
     */
-    'enable_default_breadcrumb' => true,
+    'enable_default_breadcrumb' => false,
 
     /*
     |--------------------------------------------------------------------------

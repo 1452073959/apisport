@@ -27,9 +27,15 @@ class CommodityController extends AdminController
             $grid->starttime;
             $grid->endtime;
 //            $grid->status;
-            $grid->status->using([0 => '下架', 1 => '上架']);
+            $grid->status->using([0 => '下架', 1 => '上架'])->filter(
+                Grid\Column\Filter\In::make([
+                    1 => '上架',
+                    0=> '下架',
+
+                ])
+            );;
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+                $filter->like('title', '商品名称');
         
             });
 

@@ -39,7 +39,7 @@ class CommodityOrderController extends AdminController
             $grid->filter(function (Grid\Filter $filter) {
 //                $filter->equal('id');
                 $filter->like('no', '订单号');
-//                $filter->like('Commodity.title', '商品名称');
+                $filter->like('Commodity.title', '商品名称');
             });
             $grid->disableDeleteButton();
             $grid->disableEditButton();

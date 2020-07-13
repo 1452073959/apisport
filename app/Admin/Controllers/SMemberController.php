@@ -19,6 +19,8 @@ class SMemberController extends AdminController
     {
         return Grid::make(new SMember(), function (Grid $grid) {
             $grid->id->sortable();
+            // 禁用过滤器按钮
+            $grid->disableFilterButton();
             $grid->cardname;
             $grid->deadline;
             $grid->price;
